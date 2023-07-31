@@ -1,0 +1,167 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mrp_user
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-31 21:17+0000\n"
+"PO-Revision-Date: 2023-07-31 21:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__account_id
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__account_id
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: mrp_user
+#: model:ir.model,name:mrp_user.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Lista de Materiales"
+
+#. module: mrp_user
+#: model:ir.model,name:mrp_user.model_mrp_bom_cost
+#: model_terms:ir.ui.view,arch_db:mrp_user.mrp_bom_form_view_mrp
+#: model_terms:ir.ui.view,arch_db:mrp_user.mrp_production_form_view_mrp
+msgid "BoM Costs"
+msgstr "Costos de LdM"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__bom_id
+msgid "BoM"
+msgstr "LdM"
+
+#. module: mrp_user
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_bom_cost__split_method__by_current_cost_price
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_production_cost__split_method__by_current_cost_price
+msgid "By Current Cost"
+msgstr "Por Costo Actual"
+
+#. module: mrp_user
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_bom_cost__split_method__by_quantity
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_production_cost__split_method__by_quantity
+msgid "By Quantity"
+msgstr "Por Cantidad"
+
+#. module: mrp_user
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_bom_cost__split_method__by_volume
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_production_cost__split_method__by_volume
+msgid "By Volume"
+msgstr "Por Volumen"
+
+#. module: mrp_user
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_bom_cost__split_method__by_weight
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_production_cost__split_method__by_weight
+msgid "By Weight"
+msgstr "Por Peso"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production__cost_id
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__cost_id
+msgid "Cost"
+msgstr "Costo"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom__cost_ids
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production__cost_ids
+msgid "Costs"
+msgstr "Costos"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__create_uid
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__create_date
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__display_name
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__display_name
+msgid "Display Name"
+msgstr "Nombre Público"
+
+#. module: mrp_user
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_bom_cost__split_method__equal
+#: model:ir.model.fields.selection,name:mrp_user.selection__mrp_production_cost__split_method__equal
+msgid "Equal"
+msgstr "Igual"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__id
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost____last_update
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost____last_update
+msgid "Last Modified on"
+msgstr "Última Modificación el"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__write_uid
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__write_date
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__write_date
+msgid "Last Updated on"
+msgstr "Actualizado"
+
+#. module: mrp_user
+#: model:res.groups,name:mrp_user.group_mrp_cost
+msgid "Manage BoM Costs"
+msgstr "Administrar Costos en LdM"
+
+#. module: mrp_user
+#: model:ir.actions.act_window,name:mrp_user.stock_landed_cost_action
+#: model:ir.ui.menu,name:mrp_user.stock_landed_cost_menu
+msgid "Manufacturing Costs"
+msgstr "Costos en Producción"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__price_unit
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__price_unit
+msgid "Price Unit"
+msgstr "Precio Unitario"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__product_id
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__production_id
+msgid "Production"
+msgstr "Producción"
+
+#. module: mrp_user
+#: model:ir.model,name:mrp_user.model_mrp_production_cost
+msgid "Production Costs"
+msgstr "Costos en Production"
+
+#. module: mrp_user
+#: model:ir.model,name:mrp_user.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"
+
+#. module: mrp_user
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_bom_cost__split_method
+#: model:ir.model.fields,field_description:mrp_user.field_mrp_production_cost__split_method
+msgid "Split Method"
+msgstr "Método de División"
