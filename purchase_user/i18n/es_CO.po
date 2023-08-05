@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_user
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-05 00:34+0000\n"
+"PO-Revision-Date: 2023-08-05 00:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_user
+#: model:ir.model,name:purchase_user.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: purchase_user
+#: model:ir.model.fields,field_description:purchase_user.field_res_partner__purchase_method
+#: model:ir.model.fields,field_description:purchase_user.field_res_users__purchase_method
+msgid "Control Policy"
+msgstr ""
+
+#. module: purchase_user
+#: model:ir.model.fields.selection,name:purchase_user.selection__res_partner__purchase_method__purchase
+msgid "On ordered quantities"
+msgstr "En cantidades pedidas"
+
+#. module: purchase_user
+#: model:ir.model.fields,help:purchase_user.field_res_partner__purchase_method
+#: model:ir.model.fields,help:purchase_user.field_res_users__purchase_method
+msgid ""
+"On ordered quantities: Control bills based on ordered quantities. \n"
+" On received quantities: Control bills based on received quantities."
+msgstr ""
+"Sobre cantidades pedidas: Control de facturas basado en cantidades pedidas.\n"
+"Sobre cantidades recibidas: Control de facturas basado en cantidades recibidas."
+
+#. module: purchase_user
+#: model:ir.model.fields.selection,name:purchase_user.selection__res_partner__purchase_method__receive
+msgid "On received quantities"
+msgstr "En Cantidades recibidas"
+
+#. module: purchase_user
+#: model:ir.model,name:purchase_user.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
