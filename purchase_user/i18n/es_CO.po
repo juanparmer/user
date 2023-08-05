@@ -24,7 +24,7 @@ msgstr "Contacto"
 #: model:ir.model.fields,field_description:purchase_user.field_res_partner__purchase_method
 #: model:ir.model.fields,field_description:purchase_user.field_res_users__purchase_method
 msgid "Control Policy"
-msgstr ""
+msgstr ""Política de control
 
 #. module: purchase_user
 #: model:ir.model.fields.selection,name:purchase_user.selection__res_partner__purchase_method__purchase
