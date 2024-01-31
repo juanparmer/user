@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 SPLIT_METHOD = [
     ('equal', 'Equal'),
@@ -77,6 +78,8 @@ class MrpProduction(models.Model):
         return res
 
     def action_cost_create(self):
+        # TO DO
+        # Account Analytic
         Cost = self.env['stock.landed.cost']
         for production in self.filtered(lambda p: p.product_id.cost_method in ('fifo', 'average')):
             cost_lines = []
@@ -91,12 +94,34 @@ class MrpProduction(models.Model):
 
     def action_cost_prepare(self):
         self.ensure_one()
+        # journal = self.company_id.pac_journal_id
+        # if not journal:
+        #     raise UserError(
+        #         _('The journal has not been configured in the company')
+        #     )
         return {
             'account_journal_id': self.env.ref('mrp_user.journal_mrp_cost').id,
             'date': fields.Date.today(),
             'target_model': 'manufacturing',
             'mrp_production_ids': [(4, self.id, 0)],
         }
+
+    def _post_inventory(self, cancel_backorder=False):
+        res = super(MrpProduction, self)._post_inventory(
+            cancel_backorder=cancel_backorder)
+        work_center_cost = 0
+        finished_move = self.move_finished_ids.filtered(
+            lambda x: x.product_id == self.product_id and x.state == 'done' and x.quantity_done > 0)
+        if finished_move:
+            finished_move.ensure_one()
+            for work_order in self.workorder_ids:
+                time_lines = work_order.time_ids.filtered(
+                    lambda x: x.date_end and x.cost_already_recorded)
+                duration = sum(time_lines.mapped('duration'))
+                work_center_cost += (duration / 60.0) * \
+                    work_order.workcenter_id.costs_hour
+                work_order.account_move_create(finished_move, work_center_cost)
+        return res
 
 
 class MrpProductionCost(models.Model):

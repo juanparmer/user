@@ -1,37 +1,34 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Manufacturing User",
-
     'summary': "Manufacturing Orders & BOMs",
-
     'description': "Manufacturing Orders & BOMs",
-
-    'author': "Odone",
-    'website': "https://www.odone.com.co",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
+    'author': 'OdOne S.A.S.',
+    'website': 'https://www.odone.com.co/',
     'category': 'Manufacturing/Manufacturing',
-    'version': '15.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['mrp_landed_costs'],
-
-    # always loaded
+    'version': '15.0.0.0.1',
+    'depends': [
+        'mrp_landed_costs'
+    ],
     'data': [
         'security/res_groups_security.xml',
         'security/ir.model.access.csv',
         'data/account_journal_data.xml',
+        'data/product_product_data.xml',
+        'data/product_product_data.xml',
         'views/mrp_bom_views.xml',
         'views/mrp_production_views.xml',
+        'views/mrp_workcenter_views.xml',
         'views/stock_landed_views.xml',
-        'views/templates.xml',
+        'wizard/production_account_close_views.xml',
+        # 'wizard/res_config_settings_views.xml',
     ],
-    # only loaded in demonstration mode
     'demo': [
+        'demo/account_account_demo.xml',
         'demo/product_product_demo.xml',
+        'demo/product_category_demo.xml',
+        'demo/mrp_bom_demo.xml',
+        'demo/mrp_production_demo.xml',
     ],
-    # license
     'license': 'LGPL-3',
 }

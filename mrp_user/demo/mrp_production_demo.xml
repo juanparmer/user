@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="production_cost_mrp_cost" model="mrp.production.cost">
+            <field name="account_id" ref="account_mrp_cost"/>
+            <field name="production_id" ref="mrp.mrp_production_1"/>
+            <field name="price_unit">9</field>
+            <field name="product_id" ref="product_mrp_cost"/>
+        </record>
+    </data>
+</odoo>

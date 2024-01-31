@@ -11,7 +11,7 @@
                             <field name="bom_id" invisible="True" />
                             <field name="product_id" required="True" />
                             <field name="account_id" required="True" />
-                            <field name="split_method" required="True" />
+                            <field name="split_method" invisible="True" />
                             <field name="price_unit" required="True" />
                         </tree>
                     </field>
