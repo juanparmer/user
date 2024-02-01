@@ -2279,6 +2279,73 @@ class ResPartner(models.Model):
             except Exception as e:
                 _logger.error("%s", e)
 
+    def sh_customer_month(self):
+        self.ensure_one()
+
+        months = {}
+
+        query = """
+        select 
+            invoice_date, 
+            invoice_date_due, 
+            EXTRACT(MONTH FROM invoice_date), 
+            case 
+                when move_type = 'out_refund' then -amount_residual 
+                else amount_residual
+            end amount_residual
+        from 
+            account_move 
+        where 
+            partner_id = %s 
+            and move_type in ('out_invoice', 'out_refund') 
+            and state not in ('draft','cancel') 
+        """
+        self.env.cr.execute(query % str(self.id))
+        invoices = self.env.cr.dictfetchall()
+
+        query = """
+            select 
+                aml.amount_residual_currency, 
+                aml.date, 
+                EXTRACT(MONTH FROM aml.date) 
+            from 
+                account_move_line aml 
+                inner join account_account aa on aa.id = aml.account_id 
+                inner join account_payment ap on ap.id = aml.payment_id
+            where 
+                aa.account_type in ('asset_receivable', 'liability_payable') 
+                and aml.parent_state = 'posted' 
+                and ap.id = %s 
+                and is_reconciled = False 
+                and partner_type = 'customer' 
+                -- and ap.state = 'posted' 
+        """
+        self.env.cr.execute(query % str(self.id))
+        payments = self.env.cr.dictfetchall()
+
+        today = date.today()
+        # start_date = today.replace(day=1) - timedelta(months=-1)
+        # end_date = start_date + timedelta(months=1)
+
+        for month in range(-4, 2, 1):
+            start_date = today.replace(day=1) + relativedelta(months=month)
+            end_date = today.replace(day=1) + relativedelta(months=month+1)
+
+            if month == -4:
+                invoice = sum(i.get('amount_residual') or 0 for i in invoices if i.get('invoice_date') < end_date)
+                payment = sum(p.get('amount_residual_currency') or 0 for p in payments if p.get('date') < end_date)
+            elif month == 1:
+                invoice = sum(i.get('amount_residual') or 0 for i in invoices if i.get('invoice_date') >= start_date)
+                payment = sum(p.get('amount_residual_currency') or 0 for p in payments if p.get('date') >= start_date)
+            else:
+                invoice = sum(i.get('amount_residual') or 0 for i in invoices if i.get('invoice_date') >= start_date and i.get('invoice_date') < end_date)
+                payment = sum(p.get('amount_residual_currency') or 0 for p in payments if p.get('date') >= start_date and p.get('date') < end_date)
+
+            months[str(month)] = invoice + payment
+            # print(month, start_date, end_date)
+
+        return months
+
 
 class FilterCustomerStateMent(models.Model):
     _name = "sh.res.partner.filter.statement"

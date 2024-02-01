@@ -80,7 +80,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-sm o_main_table mt-4">
+                    <!-- <table class="table table-sm o_main_table mt-4">
                         <thead style="display: table-row-group;">
                             <tr>
                             	<th>Gap Between Days</th>
@@ -100,6 +100,54 @@
                                 <td><t t-esc="'%.2f'%total" /></td>
                             </tr>
                         </thead>
+                    </table> -->
+                    <table class="table table-sm o_main_table mt-4">
+                        <thead style="display: table-row-group;">
+                            <tr>
+                                <th>
+                                    <t t-esc="(datetime.date.today() + relativedelta(months=1)).strftime('%B')"/>
+                                    <div style="white-space: nowrap;">(Next month)</div>
+                                    <div>(NOT DUE)</div>
+                                </th>
+                                <th>
+                                    <t t-esc="datetime.date.today().strftime('%B')"/>
+                                    <div>(current)</div>
+                                    <div style="white-space: nowrap;">(DUE NOW)</div>
+                                </th>
+                                <th>
+                                    <t t-esc="(datetime.date.today() - relativedelta(months=1)).strftime('%B')"/>
+                                    <div>(30 days)</div>
+                                    <div>(PLEASE PAY IMMEDIATELY)</div>
+                                </th>
+                                <th>
+                                    <t t-esc="(datetime.date.today() - relativedelta(months=2)).strftime('%B')"/>
+                                    <div>(60 days)</div>
+                                    <div>(PLEASE PAY IMMEDIATELY)</div>
+                                </th>
+                                <th>
+                                    <t t-esc="(datetime.date.today() - relativedelta(months=3)).strftime('%B')"/>
+                                    <div>(90 days)</div>
+                                    <div>(URGENT PAYMENT IS REQUIRED)</div>
+                                </th>
+                                <th>
+                                    Pre
+                                    <t t-esc="(datetime.date.today() - relativedelta(months=4)).strftime('%B')"/>
+                                    <div>(120+ days)</div>
+                                    <div>(URGENT PAYMENT IS REQUIRED)</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="sh_customer" t-value="o.sh_customer_month()"/>
+                            <tr>
+                                <td><t t-esc="'%.2f'%sh_customer.get('1')" /></td>
+                                <td><t t-esc="'%.2f'%sh_customer.get('0')" /></td>
+                                <td><t t-esc="'%.2f'%sh_customer.get('-1')" /></td>
+                                <td><t t-esc="'%.2f'%sh_customer.get('-2')" /></td>
+                                <td><t t-esc="'%.2f'%sh_customer.get('-3')" /></td>
+                                <td><t t-esc="'%.2f'%sh_customer.get('-4')" /></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </t>
             </div>
