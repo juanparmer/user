@@ -2323,6 +2323,7 @@ class ResPartner(models.Model):
         self.env.cr.execute(query % str(self.id))
         payments = self.env.cr.dictfetchall()
 
+        total = 0
         today = date.today()
         # start_date = today.replace(day=1) - timedelta(months=-1)
         # end_date = start_date + timedelta(months=1)
@@ -2341,8 +2342,11 @@ class ResPartner(models.Model):
                 invoice = sum(i.get('amount_residual') or 0 for i in invoices if i.get('invoice_date') >= start_date and i.get('invoice_date') < end_date)
                 payment = sum(p.get('amount_residual_currency') or 0 for p in payments if p.get('date') >= start_date and p.get('date') < end_date)
 
+            total += (invoice + payment)
             months[str(month)] = invoice + payment
             # print(month, start_date, end_date)
+        
+        months['total'] = total
 
         return months
 
