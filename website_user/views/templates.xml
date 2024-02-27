@@ -1,0 +1,19 @@
+<odoo>
+    <!-- <template id="website_user.brand_promotion" inherit_id="website.brand_promotion">
+        <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message">
+                    Designed by <a target="_blank" href="http://d-3system.com.au">Dimension3 System</a>
+                </t>
+            </t>
+        </xpath>
+    </template> -->
+
+    <template id="website_user.brand_promotion" inherit_id="website.brand_promotion">
+        <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message"></t>
+            </t>
+        </xpath>
+    </template>
+</odoo>
