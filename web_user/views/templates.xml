@@ -1,0 +1,23 @@
+<odoo>
+    <template id="web_user.brand_promotion_message" inherit_id="web.brand_promotion_message">
+        <xpath expr="//t[@t-set='odoo_logo']" position="replace">
+            <t t-set="odoo_logo">
+                <a target="_blank" t-attf-href="https://d-3system.com.au" class="badge text-bg-light">
+                    <img alt="Dimension3" src="/web_user/static/img/dimension3_logo.png" width="62" height="20" style="width: auto; height: 1em; vertical-align: baseline;"/>
+                </a>
+            </t>
+        </xpath>
+        <xpath expr="//t[@t-set='final_message']" position="replace">
+            <t t-set="final_message">Designed by %s%s</t>
+        </xpath>
+    </template>
+
+    <!-- <template id="website_user.brand_promotion" inherit_id="website_sale.brand_promotion">
+        <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message"></t>
+                <t t-set="_utm_medium"></t>
+            </t>
+        </xpath>
+    </template> -->
+</odoo>
