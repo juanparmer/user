@@ -7,6 +7,7 @@
     'description': """  """,
 
     'author': "Dimension3 System",
+    'contributors': ["juanparmer@gmail.com"],
     'website': "https://d-3system.com.au/",
 
     # Categories can be used to filter modules in modules listing
@@ -29,6 +30,8 @@
         'demo/demo.xml',
     ],
     # license
-    'license': 'LGPL-3'
+    'license': 'LGPL-3',
+    # hooks
+    # 'post_init_hook': 'post_init_hook',
 }
 

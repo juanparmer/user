@@ -11,4 +11,13 @@
             <t t-set="final_message">Designed by %s%s</t>
         </xpath>
     </template>
+
+    <!-- <template id="website_user.brand_promotion" inherit_id="website_sale.brand_promotion">
+        <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message"></t>
+                <t t-set="_utm_medium"></t>
+            </t>
+        </xpath>
+    </template> -->
 </odoo>
