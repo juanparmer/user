@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="True">
+        <record id="template_timesheet_weekly" model="mail.template">
+            <field name="name">Weekly Timesheet</field>
+            <field name="model_id" ref="project.model_project_project"/>
+            <field name="email_from">{{ (user.email_formatted or object.company_id.email_formatted) }}</field>
+            <!-- <field name="partner_to">{{ object.partner_id.id }}</field> -->
+            <!-- <field name="email_to">{{ object.timesheet_email_to }}</field> -->
+            <!-- <field name="email_cc">{{ object.timesheet_email_cc }}</field> -->
+            <field name="subject">{{ object.partner_id.name }} - Weekly Timesheet Report</field>
+            <field name="description">Sent to customers the Weekly Timesheet</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p style="margin-bottom: 0px;">
+                        Hi
+                        <t t-out="object.partner_id.name or ''">,</t>
+                        <br />
+                        <br />
+                        Please see attached your weekly timesheet report.
+                        <br />
+                        <br />
+                        <t t-if="object.allocated_hours &lt; 0">
+                            Time registered on this project is for communication and transparency puposes only, and may not be included in billing.
+                        </t>
+                        <t t-else="">
+                            The remaining hours on your current package is reported as: 
+                            <t t-out="object.remaining_hours or 0">.</t>
+                        </t>
+                    </p>
+                </div>
+            </field>
+            <!-- <field name="report_template_ids" eval="[(4, ref('account.account_invoices'))]"/> -->
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+    </data>
+</odoo>
