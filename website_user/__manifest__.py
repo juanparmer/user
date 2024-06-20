@@ -16,13 +16,13 @@
     'version': '17.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['website_sale'],
+    'depends': ['website'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'data/ir_cron_data.xml',
+        'templates/web_template.xml',
+        'templates/website_template.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
