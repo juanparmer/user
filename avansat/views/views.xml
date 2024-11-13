@@ -14,6 +14,16 @@
         <field name="arch" type="xml">
             <tree string="Avansat">
                 <field name="manifiesto" />
+                <field name="fecha_manifiesto"/>
+                <field name="placa"/>
+                <field name="remesa"/>
+                <field name="val_inicial_remesa"/>
+                <field name="val_declarado_remesa"/>
+                <field name="val_ser_esp_rem"/>
+                <field name="facturado_a"/>
+                <field name="origen"/>
+                <field name="destino"/>
+                <field name="destinatario"/>
             </tree>
         </field>
     </record>
@@ -103,7 +113,7 @@
                             <field name="valor_liquidado" />
                             <field name="retefuente_liquid" />
                             <field name="ica_liquid" />
-                            <field name="cree_liquid Liquid"/>
+                            <field name="cree_liquid"/>
                             <field name="fecha_liquid" />
                             <field name="nro_comprob_2" />
                             <field name="faltantes_por_liquidacion" />
@@ -154,7 +164,7 @@
         </field>
     </record>
     <record id="avansat_avansat_action" model="ir.actions.act_window">
-        <field name="name">Action Name</field>
+        <field name="name">Avansat</field>
         <field name="res_model">avansat.avansat</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
@@ -162,11 +172,11 @@
     </record>
     <menuitem
         id="avansat_avansat_root"
-        name="name"
+        name="Avansat"
         sequence="10"/>
     <menuitem
         id="avansat_avansat_menu"
-        name="name"
+        name="Avansat"
         action="avansat_avansat_action"
         parent="avansat_avansat_root"
         sequence="10"/>
