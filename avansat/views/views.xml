@@ -1,0 +1,173 @@
+<odoo>
+    <record id="avansat_avansat_view_search" model="ir.ui.view">
+        <field name="name">avansat.avansat.view.search</field>
+        <field name="model">avansat.avansat</field>
+        <field name="arch" type="xml">
+            <search string="Avansat">
+                <field name="manifiesto" />
+            </search>
+        </field>
+    </record>
+    <record id="avansat_avansat_view_tree" model="ir.ui.view">
+        <field name="name">avansat.avansat.view.tree</field>
+        <field name="model">avansat.avansat</field>
+        <field name="arch" type="xml">
+            <tree string="Avansat">
+                <field name="manifiesto" />
+            </tree>
+        </field>
+    </record>
+    <record id="avansat_avansat_view_form" model="ir.ui.view">
+        <field name="name">avansat.avansat.view.form</field>
+        <field name="model">avansat.avansat</field>
+        <field name="arch" type="xml">
+            <form string="Avansat">
+                <sheet>
+                    <group>
+                        <group string="verde">
+                            <field name="manifiesto"/>
+                            <field name="fecha_manifiesto"/>
+                            <field name="placa"/>
+                            <field name="remesa"/>
+                            <field name="val_inicial_remesa"/>
+                            <field name="val_declarado_remesa"/>
+                            <field name="val_ser_esp_rem"/>
+                            <field name="facturado_a"/>
+                            <field name="origen"/>
+                            <field name="destino"/>
+                            <field name="destinatario"/>
+
+                        </group>
+                        <group string="azul">
+                            <field name="nombre_ser_especial"/>
+                            <field name="val_ser_esp_man"/>
+                            <field name="ser_especial_manifiesto"/>
+                           
+                        </group>
+                        <group string="rosado">
+                            <field name="tn_pedido"/>
+                            <field name="tn_cumplido"/>
+                            <field name="flete_manifiesto"/>
+                            <field name="retefuente_manifiesto"/>
+                            <field name="ica_manifiesto"/>
+                            <field name="anticipo"/>
+
+                        </group>
+                        <group string="blanco">
+                            <field name="remolque"/>
+                            <field name="configuracion"/>
+                            <field name="contenedor_1"/>
+                            <field name="contenedor_2"/>
+                            <field name="tipo_vinculacion"/>
+                            <field name="orden_cargue"/>
+                            <field name="remisiones"/>
+                            <field name="fecha_remesa"/>
+                            <field name="fecha_salida_despacho"/>
+                            <field name="fecha_llegada_despacho"/>
+                            <field name="cumplida"/>
+                            <field name="fecha_llegada_cargue"/>
+                            <field name="fecha_salida_cargue"/>
+                            <field name="fecha_llegada_descargue"/>
+                            <field name="fecha_salida_descargue"/>
+                            <field name="factura"/>
+                            <field name="fecha_factura"/>
+                            <field name="fecha_vencimiento"/>
+                            <field name="val_facturado_x_separado"/>
+                            <field name="val_facturado_remesa"/>
+                            <field name="nombre_ser_especial"/>
+                            <field name="aplica_rentabilidad"/>
+                            <field name="val_servicios"/>
+                            <field name="val_produccion"/>
+                            <field name="cantidad_facturada"/>
+                            <field name="costo_unitario" />
+                            <field name="retefuente_factura" />
+                            <field name="ica_factura" />
+                            <field name="iva_factura" />
+                            <field name="sede" />
+                            <field name="asesor_comercial" />
+                            <field name="agencia_despacho" />
+                            <field name="remitente" />
+                            <field name="empaque" />
+                            <field name="unidad_servicio" />
+                            <field name="tn_o_cargue" />
+                            <field name="tn_remesa" />
+                            <field name="pendiente" />
+                            <field name="cantidad_cumplida" />
+                            <field name="usuario_cumplido_manifiesto" />
+                            <field name="fecha_cumplido_manifiesto" />
+                            <field name="tiquete_cargue" />
+                            <field name="tiquete_descargue" />
+                            <field name="nro_anticipos" />
+                            <field name="nro_comprob_1" />
+                            <field name="valor_flete_liquidacion" />
+                            <field name="valor_liquidado" />
+                            <field name="retefuente_liquid" />
+                            <field name="ica_liquid" />
+                            <field name="cree_liquid Liquid"/>
+                            <field name="fecha_liquid" />
+                            <field name="nro_comprob_2" />
+                            <field name="faltantes_por_liquidacion" />
+                            <field name="novedad_reportada" />
+                            <field name="valor_a_descontar"  />
+                            <field name="descripcion_nov_cum" />
+                            <field name="servicio_integral" />
+                            <field name="aplica_rentabilidad"  />
+                            <field name="valor_pagado" />
+                            <field name="fecha_pago" />
+                            <field name="nro_comprob_3" />
+                            <field name="banco" />
+                            <field name="cuenta_bancaria" />
+                            <field name="nro_cheque" />
+                            <field name="tipo_pago" />
+                            <field name="producto" />
+                            <field name="conductor" />
+                            <field name="cc_conductor" />
+                            <field name="celular" />
+                            <field name="poseedor" />
+                            <field name="cc_nit_poseedor" />
+                            <field name="nro_pedido" />
+                            <field name="campo1_opcional" />
+                            <field name="observacion_llegada" />
+                            <field name="orden_servicio" />
+                            <field name="vlr_tarifa_cotizacion_cliente" />
+                            <field name="descripcion_tarifa" />
+                            <field name="fecha_recaudo" />
+                            <field name="nro_comprobante_recaudo" />
+                            <field name="creado_por" />
+                            <field name="estado" />
+                            <field name="documento_destinatario" />
+                            <field name="remesa_padre" />
+                            <field name="costo_produccion" />
+                            <field name="prorrateo_costo_estimado_propio" />
+                            <field name="prorrateo_costo_estimado_tercero" />
+                            <field name="prorrateo_utilidad_estimada"/>
+                            <field name="fecha_hora_entrada_cargue" />
+                            <field name="fecha_hora_entrada_descargue" />
+                            <field name="manifiesto_paqueteo" />
+                            <field name="nro_remesa_paqueteo" />
+                            <field name="tipo_manifiesto" />
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="avansat_avansat_action" model="ir.actions.act_window">
+        <field name="name">Action Name</field>
+        <field name="res_model">avansat.avansat</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem
+        id="avansat_avansat_root"
+        name="name"
+        sequence="10"/>
+    <menuitem
+        id="avansat_avansat_menu"
+        name="name"
+        action="avansat_avansat_action"
+        parent="avansat_avansat_root"
+        sequence="10"/>
+</odoo>
