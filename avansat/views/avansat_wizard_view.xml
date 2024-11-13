@@ -4,23 +4,27 @@
         <field name="name">avansat.wizard.view.form</field>
         <field name="model">avansat.wizard</field>
         <field name="arch" type="xml">
-            <form string="">
+            <form string="Crear Factura">
                 <sheet>
                     <group>
-                        <field name="avansat_id" />
+                        <field name="avansats_ids" widget="many2many_tags" readonly="True" />
+                        <field name="product_id" domain="[('type','=','service')]" required="True" />
                     </group>
                 </sheet>
+                <footer>
+                    <button string="Confirm" class="btn btn-primary" type="object" name="action_confirm" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
             </form>
         </field>
     </record>
+
     <record id="avansat_wizard_action" model="ir.actions.act_window">
         <field name="name">Crear factura</field>
         <field name="res_model">avansat.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="binding_model_id" ref="model_avansat_avansat"/>
+        <field name="binding_model_id" ref="model_avansat_avansat" />
         <!-- <field name="binding_view_types">form</field> -->
     </record>
-    
-
 </odoo>

@@ -4,19 +4,33 @@ from odoo import models, fields, api
 
 
 class avansat(models.Model):
-    _name = 'avansat.avansat'
-    _description = 'Avansat'
+    _name = "avansat.avansat"
+    _description = "Avansat"
 
-    
+    def _default_currency_id(self):
+        return self.env.company.currency_id
+
+    name = fields.Char(related="manifiesto", copy=False, readonly=True, string="Nombre")
+    currency_id = fields.Many2one("res.currency", default=_default_currency_id)
+
+    # TODO
+    # Separarlos por color
+    # Verde
     manifiesto = fields.Char(string="Manifiesto")
     fecha_manifiesto = fields.Date(string="Fecha Manifiesto")
     placa = fields.Char(string="Placa")
+    # Rojo
+    tn_pedido = fields.Float(string="(Tn) Pedido")
+    # Azul
+    nombre_ser_especial = fields.Char(string="Nombre del Ser. Especial")
+    # Blanco
     remolque = fields.Char(string="Remolque")
     configuracion = fields.Char(string="Configuración")
     contenedor_1 = fields.Char(string="Contenedor 1")
     contenedor_2 = fields.Char(string="Contenedor 2")
     tipo_vinculacion = fields.Char(string="Tipo Vinculación")
     orden_cargue = fields.Char(string="Orden de Cargue")
+
     remesa = fields.Char(string="Remesa")
     remisiones = fields.Char(string="Remisiones")
     fecha_remesa = fields.Date(string="Fecha Remesa")
@@ -27,18 +41,18 @@ class avansat(models.Model):
     fecha_salida_cargue = fields.Datetime(string="Fecha Salida de Cargue")
     fecha_llegada_descargue = fields.Datetime(string="Fecha Llegada de Descargue")
     fecha_salida_descargue = fields.Datetime(string="Fecha Salida de Descargue")
-    factura =fields.Char(string="factura")
+    factura = fields.Char(string="factura")
     fecha_factura = fields.Date(string="Fecha Factura")
     fecha_vencimiento = fields.Date(string="Fecha Vencimiento")
-    val_inicial_remesa = fields.Integer(string="Val. Inicial Remesa")
-    val_facturado_x_separado = fields.Integer(string="Val. Facturado x Separado")
-    val_facturado_remesa = fields.Integer(string="Val. Facturado Remesa")
-    val_declarado_remesa = fields.Integer(string="Val. Declarado Remesa")
+    val_inicial_remesa = fields.Monetary(string="Val. Inicial Remesa")
+    val_facturado_x_separado = fields.Monetary(string="Val. Facturado x Separado")
+    val_facturado_remesa = fields.Monetary(string="Val. Facturado Remesa")
+    val_declarado_remesa = fields.Monetary(string="Val. Declarado Remesa")
     nombre_ser_especial = fields.Char(string="Nombre Ser. Especial")
-    val_ser_esp_rem = fields.Float(string="Val. Ser. Esp. Rem")
+    val_ser_esp_rem = fields.Monetary(string="Val. Ser. Esp. Rem.")
     aplica_rentabilidad = fields.Char(string="Aplica Rentaabilidad")
-    val_servicios = fields.Float(string="Val. Servicios")
-    val_produccion = fields.Float(string="Val. Producción")
+    val_servicios = fields.Monetary(string="Val. Servicios")
+    val_produccion = fields.Monetary(string="Val. Producción")
     cantidad_facturada = fields.Float(string="Cantidad Facturada")
     costo_unitario = fields.Float(string="Costo Unitario")
     retefuente_factura = fields.Float(string="Retefuente Factura")
@@ -51,7 +65,7 @@ class avansat(models.Model):
     remitente = fields.Char(string="Remitente")
     empaque = fields.Char(string="Empaque")
     unidad_servicio = fields.Char(string="Unidad Servicio")
-    tn_pedido = fields.Float(string="(Tn) Pedido")
+
     tn_o_cargue = fields.Float(string="(Tn) O.Cargue")
     tn_remesa = fields.Float(string="(Tn) Remesa")
     tn_cumplido = fields.Float(string="(Tn) Cumplido")
@@ -61,14 +75,14 @@ class avansat(models.Model):
     retefuente_manifiesto = fields.Float(string="Retefuente Manifiesto")
     ica_manifiesto = fields.Float(string="ICA Manifiesto")
     usuario_cumplido_manifiesto = fields.Char(string="Usuario Cumplido Manifiesto")
-    fecha_cumplido_manifiesto = fields.Datetime(string="Fecha Cumplido Manifiesto") 
+    fecha_cumplido_manifiesto = fields.Datetime(string="Fecha Cumplido Manifiesto")
     tiquete_cargue = fields.Char(string="Tiquete Cargue")
     tiquete_descargue = fields.Char(string="Tiquete Descargue")
     anticipo = fields.Float(string="Anticipo")
     nro_anticipos = fields.Integer(string="Nro. Anticipos")
     nro_comprob_1 = fields.Integer(string="Nro. Comprob")
-    valor_flete_liquidacion = fields.Integer(string="Valor Flete Liquidación")
-    valor_liquidado = fields.Integer(string="Valor Liquidado")
+    valor_flete_liquidacion = fields.Monetary(string="Valor Flete Liquidación")
+    valor_liquidado = fields.Monetary(string="Valor Liquidado")
     retefuente_liquid = fields.Integer(string="Retefuente Liquid")
     ica_liquid = fields.Integer(string="ICA Liquid")
     cree_liquid = fields.Integer(string="CREE Liquid")
@@ -76,14 +90,14 @@ class avansat(models.Model):
     nro_comprob_2 = fields.Integer(string="Nro. Comprob.")
     faltantes_por_liquidacion = fields.Integer(string="Faltantes por Liquidación")
     novedad_reportada = fields.Integer(string="Novedad Reportada")
-    valor_a_descontar = fields.Integer(string="Valor a Descontar")
+    valor_a_descontar = fields.Monetary(string="Valor a Descontar")
     descripcion_nov_cum = fields.Integer(string="Descripción Nov. Cum.")
     servicio_integral = fields.Integer(string="Servicio Integral")
-    nombre_ser_especial = fields.Char(string="Nombre del Ser. Especial")
-    val_ser_esp_man = fields.Float(string="Val. Ser. Esp. Man.")
+
+    val_ser_esp_man = fields.Monetary(string="Val. Ser. Esp. Man.")
     aplica_rentabilidad = fields.Char(string="Aplica Rentabilidad")
     ser_especial_manifiesto = fields.Integer(string="Ser. Especial Manifiesto")
-    valor_pagado = fields.Integer(string="Valor Pagado")
+    valor_pagado = fields.Monetary(string="Valor Pagado")
     fecha_pago = fields.Date(string="Fecha Pago")
     nro_comprob_3 = fields.Integer(string="Nro. Comprob")
     banco = fields.Char(string="Banco")
@@ -102,7 +116,9 @@ class avansat(models.Model):
     campo1_opcional = fields.Char(string="Campo1 (Opcional)")
     observacion_llegada = fields.Text(string="Observación de Llegada")
     orden_servicio = fields.Integer(string="Orden de Servicio")
-    vlr_tarifa_cotizacion_cliente = fields.Integer(string="Vlr. Tarifa Cotización - Cliente")
+    vlr_tarifa_cotizacion_cliente = fields.Integer(
+        string="Vlr. Tarifa Cotización - Cliente"
+    )
     descripcion_tarifa = fields.Char(string="Descripción de Tarifa")
     fecha_recaudo = fields.Date(string="Fecha de Recaudo")
     nro_comprobante_recaudo = fields.Integer(string="Nro. Comprobante Recaudo")
@@ -112,14 +128,45 @@ class avansat(models.Model):
     destinatario = fields.Char(string="Destinatario")
     remesa_padre = fields.Char(string="Remesa Padre")
     costo_produccion = fields.Integer(string="Costo Producción")
-    prorrateo_costo_estimado_propio = fields.Float(string="Prorrateo Costo Estimado Propio")
-    prorrateo_costo_estimado_tercero = fields.Float(string="Prorrateo Costo Estimado Tercero")
+    prorrateo_costo_estimado_propio = fields.Float(
+        string="Prorrateo Costo Estimado Propio"
+    )
+    prorrateo_costo_estimado_tercero = fields.Float(
+        string="Prorrateo Costo Estimado Tercero"
+    )
     prorrateo_utilidad_estimada = fields.Integer(string="Prorrateo Utilidad Estimada")
     fecha_hora_entrada_cargue = fields.Datetime(string="Fecha y Hora Entrada al Cargue")
-    fecha_hora_entrada_descargue = fields.Datetime(string="Fecha y Hora Entrada al Descargue")
+    fecha_hora_entrada_descargue = fields.Datetime(
+        string="Fecha y Hora Entrada al Descargue"
+    )
     manifiesto_paqueteo = fields.Char(string="Manifiesto Paqueteo")
     nro_remesa_paqueteo = fields.Char(string="Nro. Remesa Paqueteo")
     tipo_manifiesto = fields.Char(string="Tipo de Manifiesto")
 
-    
+    # TODO
+    # anadir los campos de cada color
+    def campos_verde(self):
+        self.ensure_one()
+        return {
+            "manifiesto": self.manifiesto,
+            "fecha_manifiesto": self.fecha_manifiesto,
+            "placa": self.placa,
+        }
 
+    def campos_rojo(self):
+        self.ensure_one()
+        return {
+            "tn_pedido": self.tn_pedido,
+        }
+
+    def campos_azul(self):
+        self.ensure_one()
+        return {
+            "nombre_ser_especial": self.nombre_ser_especial,
+        }
+
+    def campos_blanco(self):
+        self.ensure_one()
+        return {
+            "remolque": self.remolque,
+        }
