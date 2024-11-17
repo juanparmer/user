@@ -24,6 +24,9 @@ class avansat(models.TransientModel):
         fields = ["val_ser_esp_rem:sum"]
         groupby = ["facturado_a"]
         read_group = Avansat.read_group(domain, fields, groupby)
+
+        # facturas_creadas = self.env["account.move"]
+
         for rg in read_group:
             partner = self.get_partner(rg.get("facturado_a"))
             avansats = self.avansats_ids.filtered(
@@ -31,9 +34,17 @@ class avansat(models.TransientModel):
             )
             invoice_vals = self.get_invoice(avansats, partner)
             invoice = Move.create(invoice_vals)
+            # facturas_creadas |= invoice
             print(invoice)
         # TODO
         # Cretornar vista tree de las facturas
+        # return {
+        #     'type' : "ir.actions.act_window",
+        #     "name" : "Facturas",
+        #     "res_model" : "account.move",
+        #     "view_mode" : "tree",
+        #     'domain': [('id', 'in', facturas_creadas.ids)],  # Mostrar solo las facturas creadas 
+        # }
         return True
 
     def get_partner(self, name):
