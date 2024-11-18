@@ -26,6 +26,9 @@ class avansat(models.TransientModel):
         fields = ["val_ser_esp_rem:sum"]
         groupby = ["facturado_a"]
         read_group = Avansat.read_group(domain, fields, groupby)
+
+        # facturas_creadas = self.env["account.move"]
+
         for rg in read_group:
             partner = self.get_partner(rg.get("facturado_a"))
             avansats = self.avansats_ids.filtered(

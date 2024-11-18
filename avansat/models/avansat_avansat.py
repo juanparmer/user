@@ -142,6 +142,7 @@ class Avansat(models.Model):
     nro_remesa_paqueteo = fields.Char(string="Nro. Remesa Paqueteo")
     tipo_manifiesto = fields.Char(string="Tipo de Manifiesto")
 
+
     # TODO
     # anadir los campos de cada color
     def campos_verde(self):
@@ -150,22 +151,128 @@ class Avansat(models.Model):
             "manifiesto": self.manifiesto,
             "fecha_manifiesto": self.fecha_manifiesto,
             "placa": self.placa,
+            "remesa" : self.remesa,
+            "val_inicial_remesa": self.val_inicial_remesa,
+            "val_declarado_remesa": self.val_declarado_remesa,
+            "val_ser_esp_rem": self.val_ser_esp_rem,
+            "facturado_a": self.facturado_a,
+            "origen": self.origen,
+            "destino": self.destino,
+            "destinatario": self.destinatario
         }
 
     def campos_rojo(self):
         self.ensure_one()
         return {
             "tn_pedido": self.tn_pedido,
+            "tn_cumplido": self.tn_cumplido,
+            "flete_manifiesto": self.flete_manifiesto,
+            "retefuente_manifiesto": self.retefuente_manifiesto,
+            "ica_manifiesto": self.ica_manifiesto,
+            "anticipo": self.anticipo
         }
 
     def campos_azul(self):
         self.ensure_one()
         return {
             "nombre_ser_especial": self.nombre_ser_especial,
+            "val_ser_esp_man" : self.val_ser_esp_man,
+            "ser_especial_manifiesto" : self.ser_especial_manifiesto
         }
 
     def campos_blanco(self):
         self.ensure_one()
         return {
             "remolque": self.remolque,
+            "configuracion": self.configuracion,
+            "contenedor_1": self.contenedor_1,
+            "contenedor_2": self.contenedor_2,
+            "tipo_vinculacion": self.tipo_vinculacion,
+            "orden_cargue": self.orden_cargue,
+            "remisiones": self.remisiones,
+            "fecha_remesa": self.fecha_remesa,
+            "fecha_salida_despacho": self.fecha_salida_despacho,
+            "fecha_llegada_despacho": self.fecha_llegada_despacho,
+            "cumplida": self.cumplida,
+            "fecha_llegada_cargue": self.fecha_llegada_cargue,
+            "fecha_salida_cargue": self.fecha_salida_cargue,
+            "fecha_llegada_descargue": self.fecha_llegada_descargue,
+            "fecha_salida_descargue": self.fecha_salida_descargue,
+            "factura": self.factura,
+            "fecha_factura": self.fecha_factura,
+            "fecha_vencimiento": self.fecha_vencimiento,
+            "val_facturado_x_separado": self.val_facturado_x_separado,
+            "val_facturado_remesa": self.val_facturado_remesa,
+            "nombre_ser_especial": self.nombre_ser_especial,
+            "aplica_rentabilidad": self.aplica_rentabilidad,
+            "val_servicios": self.val_servicios,
+            "val_produccion": self.val_produccion,
+            "cantidad_facturada": self.cantidad_facturada,
+            "costo_unitario": self.costo_unitario,
+            "retefuente_factura": self.retefuente_factura,
+            "ica_factura": self.ica_factura,
+            "iva_factura": self.iva_factura,
+            "sede": self.sede,
+            "asesor_comercial": self.asesor_comercial,
+            "agencia_despacho": self.agencia_despacho,
+            "remitente": self.remitente,
+            "empaque": self.empaque,
+            "unidad_servicio": self.unidad_servicio,
+            "tn_o_cargue": self.tn_o_cargue,
+            "tn_remesa": self.tn_remesa,
+            "pendiente": self.pendiente,
+            "cantidad_cumplida": self.cantidad_cumplida,
+            "usuario_cumplido_manifiesto": self.usuario_cumplido_manifiesto,
+            "fecha_cumplido_manifiesto": self.fecha_cumplido_manifiesto,
+            "tiquete_cargue": self.tiquete_cargue,
+            "tiquete_descargue": self.tiquete_descargue,
+            "nro_anticipos": self.nro_anticipos,
+            "nro_comprob_1": self.nro_comprob_1,
+            "valor_flete_liquidacion": self.valor_flete_liquidacion,
+            "valor_liquidado": self.valor_liquidado,
+            "retefuente_liquid": self.retefuente_liquid,
+            "ica_liquid": self.ica_liquid,
+            "cree_liquid": self.cree_liquid,
+            "fecha_liquid": self.fecha_liquid,
+            "nro_comprob_2": self.nro_comprob_2,
+            "faltantes_por_liquidacion": self.faltantes_por_liquidacion,
+            "novedad_reportada": self.novedad_reportada,
+            "valor_a_descontar": self.valor_a_descontar,
+            "descripcion_nov_cum": self.descripcion_nov_cum,
+            "servicio_integral": self.servicio_integral,
+            "aplica_rentabilidad": self.aplica_rentabilidad,
+            "valor_pagado": self.valor_pagado,
+            "fecha_pago": self.fecha_pago,
+            "nro_comprob_3": self.nro_comprob_3,
+            "banco": self.banco,
+            "cuenta_bancaria": self.cuenta_bancaria,
+            "nro_cheque": self.nro_cheque,
+            "tipo_pago": self.tipo_pago,
+            "producto": self.producto,
+            "conductor": self.conductor,
+            "cc_conductor": self.cc_conductor,
+            "celular": self.celular,
+            "poseedor": self.poseedor,
+            "cc_nit_poseedor": self.cc_nit_poseedor,
+            "nro_pedido": self.nro_pedido,
+            "campo1_opcional": self.campo1_opcional,
+            "observacion_llegada": self.observacion_llegada,
+            "orden_servicio": self.orden_servicio,
+            "vlr_tarifa_cotizacion_cliente": self.vlr_tarifa_cotizacion_cliente,
+            "descripcion_tarifa": self.descripcion_tarifa,
+            "fecha_recaudo": self.fecha_recaudo,
+            "nro_comprobante_recaudo": self.nro_comprobante_recaudo,
+            "creado_por": self.creado_por,
+            "estado": self.estado,
+            "documento_destinatario": self.documento_destinatario,
+            "remesa_padre": self.remesa_padre,
+            "costo_produccion": self.costo_produccion,
+            "prorrateo_costo_estimado_propio": self.prorrateo_costo_estimado_propio,
+            "prorrateo_costo_estimado_tercero": self.prorrateo_costo_estimado_tercero,
+            "prorrateo_utilidad_estimada": self.prorrateo_utilidad_estimada,
+            "fecha_hora_entrada_cargue": self.fecha_hora_entrada_cargue,
+            "fecha_hora_entrada_descargue": self.fecha_hora_entrada_descargue,
+            "manifiesto_paqueteo": self.manifiesto_paqueteo,
+            "nro_remesa_paqueteo": self.nro_remesa_paqueteo,
+            "tipo_manifiesto": self.tipo_manifiesto
         }
