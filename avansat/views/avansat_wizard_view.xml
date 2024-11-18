@@ -4,7 +4,7 @@
         <field name="name">avansat.wizard.view.form</field>
         <field name="model">avansat.wizard</field>
         <field name="arch" type="xml">
-            <form string="Crear Factura">
+            <form string="Crear Factura / Anticipo">
                 <sheet>
                     <group>
                         <field name="avansats_ids" widget="many2many_tags" readonly="True" />
@@ -12,7 +12,9 @@
                     </group>
                 </sheet>
                 <footer>
-                    <button string="Confirm" class="btn btn-primary" type="object" name="action_confirm" />
+                    <button string="Crear Factura de Cliente" class="btn btn-primary" type="object" name="action_invoice" />
+                    <button string="Crear factura de Proveedor" class="btn btn-primary" type="object" name="action_bill" />
+                    <button string="Crear anticipo" class="btn btn-primary" type="object" name="action_payment" />
                     <button string="Cancel" class="btn-secondary" special="cancel" />
                 </footer>
             </form>
@@ -20,7 +22,7 @@
     </record>
 
     <record id="avansat_wizard_action" model="ir.actions.act_window">
-        <field name="name">Crear factura</field>
+        <field name="name">Crear Factura / Anticipo</field>
         <field name="res_model">avansat.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

@@ -20,7 +20,10 @@
     'version': '16.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['account'],
+    'depends': [
+        'account_voucher',
+        'base_rest'
+    ],
 
     # always loaded
     'data': [
