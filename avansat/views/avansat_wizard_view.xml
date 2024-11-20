@@ -13,8 +13,8 @@
                 </sheet>
                 <footer>
                     <button string="Crear Factura de Cliente" class="btn btn-primary" type="object" name="action_invoice" />
-                    <button string="Crear factura de Proveedor" class="btn btn-primary" type="object" name="action_bill" />
-                    <button string="Crear anticipo" class="btn btn-primary" type="object" name="action_payment" />
+                    <button string="Crear Factura de Proveedor" class="btn btn-primary" type="object" name="action_bill" />
+                    <button string="Crear Anticipo" class="btn btn-primary" type="object" name="action_payment" />
                     <button string="Cancel" class="btn-secondary" special="cancel" />
                 </footer>
             </form>

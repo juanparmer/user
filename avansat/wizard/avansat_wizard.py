@@ -22,27 +22,38 @@ class avansat(models.TransientModel):
 
         invoices = []
 
-        domain = [("id", "in", self.avansats_ids.ids)]
-        fields = ["val_ser_esp_rem:sum"]
-        groupby = ["facturado_a"]
-        read_group = Avansat.read_group(domain, fields, groupby)
-
-        # facturas_creadas = self.env["account.move"]
-
-        for rg in read_group:
-            partner = self.get_partner(rg.get("facturado_a"))
-            avansats = self.avansats_ids.filtered(
-                lambda a: a.facturado_a == rg.get("facturado_a")
+        manifiestos = self.avansat_read_group(self.avansats_ids, ["manifiesto"])
+        for m in manifiestos:
+            am = self.avansats_ids.filtered(
+                lambda a: a.manifiesto == m.get("manifiesto")
             )
-            for avansat in avansats:
-                if avansat.line_ids.filtered(lambda l: l.move_id.move_type == mtype):
-                    raise ValidationError(
-                        "La remesa %s ya esta facturada" % avansat.remesa
-                    )
+            facturados = self.avansat_read_group(am, ["facturado_a"])
+            for f in facturados:
+                avansats = self.avansats_ids.filtered(
+                    lambda a: a.facturado_a == f.get("facturado_a")
+                )
+                # for avansat in avansats:
+                #     if avansat.line_ids.filtered(
+                #         lambda l: l.move_id.move_type == mtype
+                #     ):
+                #         raise ValidationError(
+                #             "La remesa %s ya esta facturada" % avansat.remesa
+                #         )
 
-            invoice_vals = self.get_invoice(avansats, partner, mtype)
-            invoice = Move.create(invoice_vals)
-            invoices.append(invoice.id)
+                partner = self.get_partner(f.get("facturado_a"))
+                invoice_vals = self.get_invoice(avansats, partner, mtype)
+                invoice = Move.create(invoice_vals)
+                invoices.append(invoice.id)
+
+        action = self.env.ref("account.action_move_out_invoice_type")
+        action_read = action.read()[0]
+        domain = [
+            ("move_type", "=", "out_invoice"),
+            ("type_note", "=", False),
+            ("id", "in", invoices),
+        ]
+        action_read.update(domain=str(domain))
+        return action_read
 
         return {
             "name": "Facturas",
@@ -77,7 +88,7 @@ class avansat(models.TransientModel):
 
             vals = {
                 "partner_type": "supplier",
-                "voucher_type": 'advance',
+                "voucher_type": "advance",
                 "voucher_reference": avansat.ser_especial_manifiesto,
                 "partner_id": partner.id,
                 "amount": avansat.val_ser_esp_man,
@@ -97,6 +108,14 @@ class avansat(models.TransientModel):
             "domain": [("id", "in", vouchers.ids)],
         }
 
+    def avansat_read_group(self, avansats, groupby):
+        # Retorna las lineas agrupadas segun el grupo
+        Avansat = self.env["avansat.avansat"]
+        domain = [("id", "in", avansats.ids)]
+        fields = ["val_inicial_remesa:sum"]
+        # groupby = ["facturado_a"]
+        return Avansat.read_group(domain, fields, groupby)
+
     def get_partner(self, name):
         # Busca el asociado segun el nombre
         Partner = self.env["res.partner"]
@@ -104,7 +123,7 @@ class avansat(models.TransientModel):
         if not partner:
             partner = Partner.search([("name", "ilike", name)], limit=1)
         if not partner:
-            raise ValidationError("No se encontro tercero")
+            raise ValidationError("No se encontro tercero %s" % name)
         return partner
 
     def get_invoice(self, avansats, partner, mtype):
@@ -131,30 +150,41 @@ class avansat(models.TransientModel):
 
     def get_invoice_line(self, avansats):
         # Retorna una lista de tuplas para crear las lineas de la factura con el estilo [(0,0,{})]
-        # Yo hago esta parte
-        return [
-            (
-                0,
-                0,
-                {
+        Order = self.env["avansat.order"]
+        vals_list = []
+
+        for avansat in avansats:
+            rndc = avansat.avansat_ids or Order
+            vals = {
+                "product_id": self.product_id.id,
+                "price_unit": avansat.val_inicial_remesa,
+                "quantity": 1,
+                "avansat_id": avansat.id,
+                "consignment_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "consignment_id": avansat.remesa,
+                            "transport_rec": "1",
+                            "rndc_id": rndc.nro_autorizacion,
+                            "freight": avansat.val_inicial_remesa,
+                            "quantity": 1,
+                            "udm": "KGM",
+                            "order_ref": "",
+                        },
+                    )
+                ],
+            }
+            vals_list.append((0, 0, vals))
+
+            if avansat.nombre_ser_especial:
+                vals = {
                     "product_id": self.product_id.id,
-                    "price_unit": a.val_ser_esp_rem,
-                    "avansat_id": a.id,
-                    "consignment_ids": [
-                        (
-                            0,
-                            0,
-                            {
-                                "consignment_id": a.remesa,
-                                "transport_rec": "1",
-                                "freight": a.val_inicial_remesa,
-                                "quantity": 1,
-                                "udm": "KGM",
-                                "order_ref": "",
-                            },
-                        )
-                    ],
-                },
-            )
-            for a in avansats
-        ]
+                    "price_unit": avansat.val_ser_esp_rem,
+                    "quantity": 1,
+                    "avansat_id": avansat.id,
+                }
+                vals_list.append((0, 0, vals))
+
+        return vals_list

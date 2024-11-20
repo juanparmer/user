@@ -1,0 +1,18 @@
+<odoo>
+    <!-- TODO
+    Crear vista formulario y vista tree -->
+    <record id="avansat_order_action" model="ir.actions.act_window">
+        <field name="name">Listado de Ordenes</field>
+        <field name="res_model">avansat.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="avansat_order_menu"
+        name="Listado de Ordenes"
+        action="avansat_order_action"
+        parent="avansat_avansat_menu"
+        sequence="40" />
+</odoo>

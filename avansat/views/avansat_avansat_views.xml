@@ -27,8 +27,8 @@
                 <field name="val_ser_esp_man" />
                 <field name="ser_especial_manifiesto" />
                 <separator />
-                <filter string="Facturado" name="moved" domain="[('line_ids','=',[])]"/>
-                <filter string="No Facturado" name="no_moved" domain="[('line_ids','!=',[])]"/>
+                <filter string="Facturado" name="moved" domain="[('line_ids','=',[])]" />
+                <filter string="No Facturado" name="no_moved" domain="[('line_ids','!=',[])]" />
                 <separator />
                 <group expand="1" string="Group By">
                     <filter string="Manifiesto" name='by_manifiesto' context="{'group_by':'manifiesto'}" />
@@ -224,7 +224,7 @@
         <field name="name">Cliente</field>
         <field name="res_model">avansat.avansat</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="avansat_avansat_view_invoice"/>
+        <field name="view_id" ref="avansat_avansat_view_invoice" />
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
@@ -233,7 +233,7 @@
         <field name="name">Proveedor</field>
         <field name="res_model">avansat.avansat</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="avansat_avansat_view_bill"/>
+        <field name="view_id" ref="avansat_avansat_view_bill" />
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
@@ -242,7 +242,7 @@
         <field name="name">Anticipo</field>
         <field name="res_model">avansat.avansat</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="avansat_avansat_view_payment"/>
+        <field name="view_id" ref="avansat_avansat_view_payment" />
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
@@ -272,7 +272,7 @@
         action="avansat_avansat_action_bill"
         parent="avansat_avansat_menu"
         sequence="20" />
-    
+
     <menuitem
         id="avansat_avansat_menu_payment"
         name="Anticipos"
