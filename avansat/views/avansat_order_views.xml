@@ -1,6 +1,82 @@
 <odoo>
     <!-- TODO
-    Crear vista formulario y vista tree -->
+    Crear vista formulario, search y vista tree -->
+    <record id="avansat_order_view_search" model="ir.ui.view">
+        <field name="name">avansat.order.view.search</field>
+        <field name="model">avansat.order</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="remesa" />
+            </search>
+        </field>
+    </record>
+    
+    <record id="avansat_order_view_tree" model="ir.ui.view">
+        <field name="name">avansat.order.view.tree</field>
+        <field name="model">avansat.order</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="remesa" />
+                <field name="nro_remision" />
+                <field name="nro_autorizacion" />
+                <field name="tipo_remesa" />
+                <field name="agencia" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="avansat_order_view_form" model="ir.ui.view">
+        <field name="name">avansat.order.view.form</field>
+        <field name="model">avansat.order</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group name="name" >
+                            <field name="remesa" />
+                            <field name="nro_remision" />
+                            <field name="nro_autorizacion" />
+                            <field name="tipo_remesa" />
+                            <field name="agencia" />
+                            <field name="origen" />
+                            <field name="destino" />
+                            <field name="mercancia" />
+                            <field name="tipo" />
+                            <field name="estado" />
+                            <field name="impreso" />
+                            <field name="nit" />
+                            <field name="cliente" />
+                            <field name="unidad_servicio" />
+                            <field name="valor_remesa_inicial" />
+                            <field name="valor_declarado" />
+                            <field name="seguro" />
+                            <field name="valor_seguro" />
+                            <field name="valor_total" />
+                            <field name="no_factura" />
+                            <field name="valor_unitario" />
+                            <field name="valor_facturado" />
+                            <field name="fecha_de_emision" />
+                            <field name="manifiesto" />
+                            <field name="creado_por" />
+                            <field name="fecha" />
+                            <field name="orden_cargue" />
+                            <field name="pedido" />
+                            <field name="observaciones_cierre" />
+                            <field name="fecha_cierre" />
+                            <field name="usuario_cierre" />
+                            <field name="radicado_salida_de_cargue" />
+                            <field name="radicado_llegada_a_descargue" />
+                            <field name="cumplido" />
+                            <field name="entrega_final" />
+                            <field name="costo_remesa" />
+                            <field name="sellos" />
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
     <record id="avansat_order_action" model="ir.actions.act_window">
         <field name="name">Listado de Ordenes</field>
         <field name="res_model">avansat.order</field>

@@ -1,0 +1,107 @@
+<odoo>
+    <!-- TODO
+    Crear vista formulario, search y vista tree -->
+    <record id="avansat_manifest_view_search" model="ir.ui.view">
+        <field name="name">avansat.manifest.view.search</field>
+        <field name="model">avansat.manifest</field>
+        <field name="arch" type="xml">
+            <search string="Manifest">
+                <field name="manifesto" />
+            </search>
+        </field>
+    </record>
+
+    <record id="avansat_manifest_view_tree" model="ir.ui.view">
+        <field name="name">avansat.manifest.view.tree</field>
+        <field name="model">avansat.manifest</field>
+        <field name="arch" type="xml">
+            <tree string="Manifest">
+                <field name="manifiesto" />
+                <field name="no_radicado" />
+                <field name="fecha_creacion" />
+                <field name="creado_por" />
+                <field name="agencia_despacho" />
+            </tree>
+        </field>
+    </record>
+    <record id="avansat_manifest_view_form" model="ir.ui.view">
+        <field name="name">avansat.manifest.view.form</field>
+        <field name="model">avansat.manifest</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group name="name" >
+                            <field name="manifiesto" />
+                            <field name="no_radicado" />
+                            <field name="fecha_creacion" />
+                            <field name="creado_por" />
+                            <field name="agencia_despacho" />
+                            <field name="agencia_pago" />
+                            <field name="origen" />
+                            <field name="ciudad_intermedia" />
+                            <field name="destino" />
+                            <field name="placa" />
+                            <field name="tipo_manifiesto" />
+                            <field name="tipo_vinculacion" />
+                            <field name="cliente" />
+                            <field name="tenedor" />
+                            <field name="documento_tenedor" />
+                            <field name="conductor" />
+                            <field name="documento" />
+                            <field name="licencia" />
+                            <field name="vencimiento_licencia" />
+                            <field name="soat" />
+                            <field name="vencimiento_soat" />
+                            <field name="segundo_conductor" />
+                            <field name="identificacion" />
+                            <field name="fecha_emision" />
+                            <field name="valor_informativo_liquidacion" />
+                            <field name="valor_flete" />
+                            <field name="retef" />
+                            <field name="ica" />
+                            <field name="anticipo" />
+                            <field name="comprobante" />
+                            <field name="sobreanticipos" />
+                            <field name="comprobantes" />
+                            <field name="estado" />
+                            <field name="modificado_por" />
+                            <field name="fecha_modificacion" />
+                            <field name="fecha_radicacion_rndc" />
+                            <field name="nro_radicado_rndc" />
+                            <field name="motivo_anulacion" />
+                            <field name="observacion_anulacion" />
+                            <field name="fecha_anulacion_rndc" />
+                            <field name="nro_anulacion_rndc" />
+                            <field name="fecha_cumplido_rndc" />
+                            <field name="fecha_anulacion_cumplido_rndc" />
+                            <field name="nro_anulacion_cumplido_rndc" />
+                            <field name="tipo_cumplido_rndc" />
+                            <field name="motivo_suspension_rndc" />
+                            <field name="consecuencia_suspension_rndc" />
+                            <field name="fecha_manifiesto_transbordo" />
+                            <field name="nro_manifiesto_transbordo" />
+                            <field name="manifiesto_paqueteo" />
+                            <field name="nro_remesa_paqueteo" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="avansat_manifest_action" model="ir.actions.act_window">
+        <field name="name">Listado de Manifiesto</field>
+        <field name="res_model">avansat.manifest</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="avansat_manifest_menu"
+        name="Listado de Ordenes"
+        action="avansat_manifest_action"
+        parent="avansat_avansat_menu"
+        sequence="40" />
+</odoo>
