@@ -29,9 +29,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/avansat_avansat_views.xml',
+        'views/avansat_manifest_views.xml',
         'views/avansat_order_views.xml',
-        'views/avansat_wizard_view.xml',
-        'views/avansat_manifest_view.xml'
+        'views/avansat_wizard_view.xml'
     ],
     
     # license

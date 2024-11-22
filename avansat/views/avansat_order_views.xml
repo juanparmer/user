@@ -1,21 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- TODO
-    Crear vista formulario, search y vista tree -->
     <record id="avansat_order_view_search" model="ir.ui.view">
         <field name="name">avansat.order.view.search</field>
         <field name="model">avansat.order</field>
         <field name="arch" type="xml">
-            <search string="">
+            <search string="Ordenes">
                 <field name="remesa" />
             </search>
         </field>
     </record>
-    
+
     <record id="avansat_order_view_tree" model="ir.ui.view">
         <field name="name">avansat.order.view.tree</field>
         <field name="model">avansat.order</field>
         <field name="arch" type="xml">
-            <tree string="">
+            <tree string="Ordenes">
                 <field name="remesa" />
                 <field name="nro_remision" />
                 <field name="nro_autorizacion" />
@@ -29,10 +28,10 @@
         <field name="name">avansat.order.view.form</field>
         <field name="model">avansat.order</field>
         <field name="arch" type="xml">
-            <form string="">
+            <form string="Ordenes">
                 <sheet>
                     <group>
-                        <group name="name" >
+                        <group>
                             <field name="remesa" />
                             <field name="nro_remision" />
                             <field name="nro_autorizacion" />
@@ -52,6 +51,8 @@
                             <field name="seguro" />
                             <field name="valor_seguro" />
                             <field name="valor_total" />
+                        </group>
+                        <group>
                             <field name="no_factura" />
                             <field name="valor_unitario" />
                             <field name="valor_facturado" />
@@ -70,7 +71,6 @@
                             <field name="entrega_final" />
                             <field name="costo_remesa" />
                             <field name="sellos" />
-
                         </group>
                     </group>
                 </sheet>

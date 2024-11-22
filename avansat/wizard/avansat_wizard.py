@@ -14,6 +14,7 @@ class avansat(models.TransientModel):
     avansats_ids = fields.Many2many("avansat.avansat", default=_default_avansats_ids)
 
     product_id = fields.Many2one("product.product")
+    product_esp_id = fields.Many2one("product.product")
 
     def action_move(self, mtype):
         # Se agrupan las lineas segun el tercero y se crean las facturas
@@ -48,22 +49,12 @@ class avansat(models.TransientModel):
         action = self.env.ref("account.action_move_out_invoice_type")
         action_read = action.read()[0]
         domain = [
-            ("move_type", "=", "out_invoice"),
+            ("move_type", "=", mtype),
             ("type_note", "=", False),
             ("id", "in", invoices),
         ]
         action_read.update(domain=str(domain))
         return action_read
-
-        return {
-            "name": "Facturas",
-            "type": "ir.actions.act_window",
-            "view_type": "tree,form",
-            "view_mode": "form",
-            "res_model": "account.move",
-            # "res_id": self.id,
-            "domain": [("id", "in", invoices)],
-        }
 
     def action_invoice(self):
         return self.action_move("out_invoice")
@@ -98,15 +89,14 @@ class avansat(models.TransientModel):
 
         vouchers = Voucher.create(voucher_list)
 
-        return {
-            "name": "Anticipos",
-            "type": "ir.actions.act_window",
-            "view_type": "tree,form",
-            "view_mode": "form",
-            "res_model": "account.voucher",
-            # "res_id": self.id,
-            "domain": [("id", "in", vouchers.ids)],
-        }
+        action = self.env.ref("account_voucher.action_account_voucher_supplier")
+        action_read = action.read()[0]
+        domain = [
+            ("partner_type", "=", "supplier"),
+            ("id", "in", vouchers.ids),
+        ]
+        action_read.update(domain=str(domain))
+        return action_read
 
     def avansat_read_group(self, avansats, groupby):
         # Retorna las lineas agrupadas segun el grupo
@@ -128,13 +118,12 @@ class avansat(models.TransientModel):
 
     def get_invoice(self, avansats, partner, mtype):
         # Retorna un diccionario para crear la factura
-        invoice_line_ids = self.get_invoice_line(avansats)
+        invoice_line_ids = self.get_invoice_line(avansats, mtype)
 
         vals = {
             "move_type": mtype,
             "type_note": False,
             "partner_id": partner.id,
-            "invoice_date": avansats[0].fecha_manifiesto,
             "invoice_line_ids": invoice_line_ids,
         }
 
@@ -148,39 +137,48 @@ class avansat(models.TransientModel):
 
         return vals
 
-    def get_invoice_line(self, avansats):
+    def get_invoice_line(self, avansats, mtype):
         # Retorna una lista de tuplas para crear las lineas de la factura con el estilo [(0,0,{})]
         Order = self.env["avansat.order"]
         vals_list = []
 
         for avansat in avansats:
-            rndc = avansat.avansat_ids or Order
+            rndc = avansat.avansat_ids and avansat.avansat_ids[-1] or Order
             vals = {
                 "product_id": self.product_id.id,
+                "name": self.get_line_name(avansat),
                 "price_unit": avansat.val_inicial_remesa,
                 "quantity": 1,
                 "avansat_id": avansat.id,
-                "consignment_ids": [
-                    (
-                        0,
-                        0,
-                        {
-                            "consignment_id": avansat.remesa,
-                            "transport_rec": "1",
-                            "rndc_id": rndc.nro_autorizacion,
-                            "freight": avansat.val_inicial_remesa,
-                            "quantity": 1,
-                            "udm": "KGM",
-                            "order_ref": "",
-                        },
-                    )
-                ],
             }
+
+            if mtype == "out_invoice":
+                vals.update(
+                    {
+                        "consignment_ids": [
+                            (
+                                0,
+                                0,
+                                {
+                                    "consignment_id": avansat.remesa,
+                                    "transport_rec": "1",
+                                    "rndc_id": rndc.nro_autorizacion,
+                                    "freight": avansat.val_inicial_remesa,
+                                    "quantity": 1,
+                                    "udm": "KGM",
+                                    "order_ref": rndc.orden_cargue,
+                                },
+                            )
+                        ],
+                    }
+                )
+
             vals_list.append((0, 0, vals))
 
-            if avansat.nombre_ser_especial:
+            if mtype == "out_invoice" and avansat.nombre_ser_especial:
                 vals = {
-                    "product_id": self.product_id.id,
+                    "product_id": self.product_esp_id.id,
+                    "name": avansat.nombre_ser_especial,
                     "price_unit": avansat.val_ser_esp_rem,
                     "quantity": 1,
                     "avansat_id": avansat.id,
@@ -188,3 +186,8 @@ class avansat(models.TransientModel):
                 vals_list.append((0, 0, vals))
 
         return vals_list
+
+    def get_line_name(self, avansat):
+        # Retorna un diccionario con los valores de avansat
+        adict = str(avansat.campos_verde())
+        return adict[1:-1]

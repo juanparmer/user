@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="avansat_avansat_view_search" model="ir.ui.view">
         <field name="name">avansat.avansat.view.search</field>
@@ -27,62 +28,46 @@
                 <field name="val_ser_esp_man" />
                 <field name="ser_especial_manifiesto" />
                 <separator />
-                <filter string="Facturado" name="moved" domain="[('line_ids','=',[])]" />
-                <filter string="No Facturado" name="no_moved" domain="[('line_ids','!=',[])]" />
+                <filter string="Facturado" name="moved" domain="[('line_ids','=',False)]" />
+                <filter string="No Facturado" name="no_moved" domain="[('line_ids','!=',False)]" />
                 <separator />
+                <!-- <filter string="Facturas de cliente" name="invoice" context="{'default_invoice': False}" />
+                <filter string="Facturas de proveedor" name="bill" context="{'default_bill': False}" />
+                <filter string="Anticipos" name="voucher" context="{'default_voucher': False}" />
+                <separator /> -->
                 <group expand="1" string="Group By">
-                    <filter string="Manifiesto" name='by_manifiesto' context="{'group_by':'manifiesto'}" />
-                    <filter string="Facturado A" name='by_facturado' context="{'group_by':'facturado_a'}" />
+                    <filter string="Manifiesto" name='by_manifiesto' context="{'group_by': 'manifiesto'}" />
+                    <filter string="Facturado A" name='by_facturado' context="{'group_by': 'facturado_a'}" />
                 </group>
             </search>
         </field>
     </record>
 
-    <record id="avansat_avansat_view_invoice" model="ir.ui.view">
+    <record id="avansat_avansat_view_tree" model="ir.ui.view">
         <field name="name">avansat.avansat.view.tree</field>
         <field name="model">avansat.avansat</field>
         <field name="arch" type="xml">
             <tree string="Avansat">
                 <field name="manifiesto" />
-                <field name="fecha_manifiesto" />
-                <field name="placa" />
-                <field name="remesa" />
-                <field name="val_inicial_remesa" />
-                <field name="val_declarado_remesa" />
-                <field name="val_ser_esp_rem" />
+                <field name="fecha_manifiesto" optional="show" />
+                <field name="placa" optional="show"/>
+                <field name="remesa" optional="show" />
+                <field name="val_inicial_remesa" optional="show" sum="Total" />
+                <field name="val_declarado_remesa" optional="show" sum="Total" />
+                <field name="val_ser_esp_rem" optional="show" sum="Total" />
                 <field name="facturado_a" />
-                <field name="origen" />
-                <field name="destino" />
-                <field name="destinatario" />
-            </tree>
-        </field>
-    </record>
-
-    <record id="avansat_avansat_view_bill" model="ir.ui.view">
-        <field name="name">avansat.avansat.view.tree</field>
-        <field name="model">avansat.avansat</field>
-        <field name="arch" type="xml">
-            <tree string="Avansat">
-                <field name="tn_pedido" />
-                <field name="tn_cumplido" />
-                <field name="flete_manifiesto" />
-                <field name="retefuente_manifiesto" />
-                <field name="ica_manifiesto" />
-                <field name="anticipo" />
-                <field name="facturado_a" />
-            </tree>
-        </field>
-    </record>
-
-    <record id="avansat_avansat_view_payment" model="ir.ui.view">
-        <field name="name">avansat.avansat.view.tree</field>
-        <field name="model">avansat.avansat</field>
-        <field name="arch" type="xml">
-            <tree string="Avansat">
-                <field name="nombre_ser_especial" />
-                <field name="val_ser_esp_man" />
-                <field name="ser_especial_manifiesto" />
-                <field name="facturado_a" />
+                <field name="origen" optional="show" />
+                <field name="destino" optional="show" />
+                <field name="destinatario" optional="show" />
+                <field name="tn_pedido" optional="hide" />
+                <field name="tn_cumplido" optional="hide" />
+                <field name="flete_manifiesto" optional="hide" />
+                <field name="retefuente_manifiesto" optional="hide" />
+                <field name="ica_manifiesto" optional="hide" />
+                <field name="anticipo" optional="hide" />
+                <field name="nombre_ser_especial" optional="hide" />
+                <field name="val_ser_esp_man" optional="hide" sum="Total" />
+                <field name="ser_especial_manifiesto" optional="hide" />
             </tree>
         </field>
     </record>
@@ -141,7 +126,6 @@
                             <field name="fecha_vencimiento" />
                             <field name="val_facturado_x_separado" />
                             <field name="val_facturado_remesa" />
-                            <field name="nombre_ser_especial" />
                             <field name="aplica_rentabilidad" />
                             <field name="val_servicios" />
                             <field name="val_produccion" />
@@ -220,29 +204,11 @@
         </field>
     </record>
 
-    <record id="avansat_avansat_action_invoice" model="ir.actions.act_window">
-        <field name="name">Cliente</field>
+    <record id="avansat_avansat_action" model="ir.actions.act_window">
+        <field name="name">Avansat</field>
         <field name="res_model">avansat.avansat</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="avansat_avansat_view_invoice" />
-        <field name="domain">[]</field>
-        <field name="context">{}</field>
-    </record>
-
-    <record id="avansat_avansat_action_bill" model="ir.actions.act_window">
-        <field name="name">Proveedor</field>
-        <field name="res_model">avansat.avansat</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="avansat_avansat_view_bill" />
-        <field name="domain">[]</field>
-        <field name="context">{}</field>
-    </record>
-
-    <record id="avansat_avansat_action_payment" model="ir.actions.act_window">
-        <field name="name">Anticipo</field>
-        <field name="res_model">avansat.avansat</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="avansat_avansat_view_payment" />
+        <!-- <field name="view_id" ref="avansat_avansat_view_invoice" /> -->
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
@@ -260,23 +226,9 @@
         sequence="10" />
 
     <menuitem
-        id="avansat_avansat_menu_invoice"
-        name="Facturas de cliente"
-        action="avansat_avansat_action_invoice"
+        id="avansat_info_menu"
+        name="Info Avansat"
+        action="avansat_avansat_action"
         parent="avansat_avansat_menu"
         sequence="10" />
-
-    <menuitem
-        id="avansat_avansat_menu_bill"
-        name="Facturas de proveedor"
-        action="avansat_avansat_action_bill"
-        parent="avansat_avansat_menu"
-        sequence="20" />
-
-    <menuitem
-        id="avansat_avansat_menu_payment"
-        name="Anticipos"
-        action="avansat_avansat_action_payment"
-        parent="avansat_avansat_menu"
-        sequence="30" />
 </odoo>

@@ -13,7 +13,7 @@ class AvansatAvansat(models.Model):
     currency_id = fields.Many2one("res.currency", default=_default_currency_id)
     name = fields.Char(related="manifiesto", copy=False, readonly=True, string="Nombre")
     line_ids = fields.One2many("account.move.line", "avansat_id")
-    avansat_ids = fields.One2many('avansat.order', 'avansat_id')
+    avansat_ids = fields.One2many("avansat.order", "avansat_id")
 
     # Verde
     manifiesto = fields.Char(string="Manifiesto")
@@ -140,16 +140,22 @@ class AvansatAvansat(models.Model):
     nro_remesa_paqueteo = fields.Char(string="Nro. Remesa Paqueteo")
     tipo_manifiesto = fields.Char(string="Tipo de Manifiesto")
 
-    # TODO
-    # anadir los campos de cada color
     def campos_verde(self):
         self.ensure_one()
         return {
             "manifiesto": self.manifiesto,
-            "fecha_manifiesto": self.fecha_manifiesto,
+            "fecha_manifiesto": fields.Date.to_string(self.fecha_manifiesto),
             "placa": self.placa,
+            "val_inicial_remesa": self.val_inicial_remesa,
+            "val_declarado_remesa": self.val_declarado_remesa,
+            "val_ser_esp_rem": self.val_ser_esp_rem,
+            "facturado_a": self.facturado_a,
+            "origen": self.origen,
+            "destino": self.destino,
+            "destinatario": self.destinatario,
         }
 
+    # TODO
     def campos_rojo(self):
         self.ensure_one()
         return {

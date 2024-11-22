@@ -8,7 +8,8 @@
                 <sheet>
                     <group>
                         <field name="avansats_ids" widget="many2many_tags" readonly="True" />
-                        <field name="product_id" domain="[('type','=','service')]" required="True" />
+                        <field name="product_id" domain="[('type','=','service')]" required="True" string="Producto Remesa" />
+                        <field name="product_esp_id" domain="[('type','=','service')]" required="True" string="Producto Especial" />
                     </group>
                 </sheet>
                 <footer>

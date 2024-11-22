@@ -65,4 +65,3 @@ class AvansatManifest(models.Model):
     nro_manifiesto_transbordo = fields.Integer("Nro. Manifiesto Transbordo")
     manifiesto_paqueteo = fields.Char("Manifiesto Paqueteo")
     nro_remesa_paqueteo = fields.Char("Nro. Remesa Paqueteo")
-

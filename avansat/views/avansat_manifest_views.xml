@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- TODO
-    Crear vista formulario, search y vista tree -->
     <record id="avansat_manifest_view_search" model="ir.ui.view">
         <field name="name">avansat.manifest.view.search</field>
         <field name="model">avansat.manifest</field>
         <field name="arch" type="xml">
-            <search string="Manifest">
-                <field name="manifesto" />
+            <search string="Manifiesto">
+                <field name="manifiesto" />
             </search>
         </field>
     </record>
@@ -15,7 +14,7 @@
         <field name="name">avansat.manifest.view.tree</field>
         <field name="model">avansat.manifest</field>
         <field name="arch" type="xml">
-            <tree string="Manifest">
+            <tree string="Manifiesto">
                 <field name="manifiesto" />
                 <field name="no_radicado" />
                 <field name="fecha_creacion" />
@@ -28,10 +27,10 @@
         <field name="name">avansat.manifest.view.form</field>
         <field name="model">avansat.manifest</field>
         <field name="arch" type="xml">
-            <form string="">
+            <form string="Manifiesto">
                 <sheet>
                     <group>
-                        <group name="name" >
+                        <group>
                             <field name="manifiesto" />
                             <field name="no_radicado" />
                             <field name="fecha_creacion" />
@@ -60,6 +59,8 @@
                             <field name="valor_flete" />
                             <field name="retef" />
                             <field name="ica" />
+                        </group>
+                        <group>
                             <field name="anticipo" />
                             <field name="comprobante" />
                             <field name="sobreanticipos" />
@@ -89,7 +90,7 @@
             </form>
         </field>
     </record>
-    
+
     <record id="avansat_manifest_action" model="ir.actions.act_window">
         <field name="name">Listado de Manifiesto</field>
         <field name="res_model">avansat.manifest</field>
@@ -100,7 +101,7 @@
 
     <menuitem
         id="avansat_manifest_menu"
-        name="Listado de Ordenes"
+        name="Listado de Manifiesto"
         action="avansat_manifest_action"
         parent="avansat_avansat_menu"
         sequence="40" />
