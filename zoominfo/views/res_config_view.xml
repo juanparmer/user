@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_crm" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="crm.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='crm']" position="inside">
+                <block title="API ZoomInfo">
+                    <setting string="User">
+                        <field name="zoominfo_user"  />
+                    </setting>
+                    <setting string="Password">
+                        <field name="zoominfo_password" password="True"  />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
