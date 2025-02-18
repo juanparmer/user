@@ -7,7 +7,7 @@
             <form string="user Tasks">
                 <sheet>
                     <group>
-                        <field name="user_id" required="1" />
+                        <field name="user_id" required="1" domain="[('id','!=',uid)]" />
                     </group>
                 </sheet>
                 <footer>
