@@ -22,7 +22,9 @@
 
     # always loaded
     'data': [
-        'view/project_task_view.xml',
+        'security/ir.model.access.csv',
+        'view/project_task_views.xml',
+        'wizard/project_task_wizard.xml',
     ],
 
     # License
