@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Project User",
+    'name': "Statement User",
 
-    'summary': "Bridge module for project and user",
+    'summary': "Account Customer Statements",
 
     'description': """
-        Add changes on task view
+Long description of module's purpose
     """,
 
     'author': "D-3system",
@@ -14,19 +14,20 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Services/Project',
-    'version': '17.0.0.1.0',
+    'category': 'Accounting/Localizations/Reporting',
+    'version': '17.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['project'],
+    'depends': ['l10n_account_customer_statements'],
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'view/project_task_views.xml',
-        'wizard/project_task_wizard.xml',
+        # 'security/ir.model.access.csv',
+        # 'views/views.xml',
+        # 'views/templates.xml',
     ],
 
     # License
     'license': 'LGPL-3',
 }
+

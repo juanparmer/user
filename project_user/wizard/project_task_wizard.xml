@@ -28,6 +28,7 @@
     <menuitem
         id="project_task_user_menu"
         action="project_task_user_action"
+        groups="project.group_project_manager"
         parent="project.menu_project_management"
         sequence="10" />
 </odoo>
