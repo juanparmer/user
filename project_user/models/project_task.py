@@ -19,17 +19,17 @@ class ProjectTask(models.Model):
         ondelete={"2": "set default", "3": "set default"},
     )
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get("priority") and priority_color.get(vals.get("priority")):
-                vals.update(color=priority_color.get(vals.get("priority")))
-        return super(ProjectTask, self).create(vals_list)
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         if vals.get("priority") and priority_color.get(vals.get("priority")):
+    #             vals.update(color=priority_color.get(vals.get("priority")))
+    #     return super(ProjectTask, self).create(vals_list)
 
-    def write(self, vals):
-        if vals.get("priority") and priority_color.get(vals.get("priority")):
-            vals.update(color=priority_color.get(vals.get("priority")))
-        return super(ProjectTask, self).write(vals)
+    # def write(self, vals):
+    #     if vals.get("priority") and priority_color.get(vals.get("priority")):
+    #         vals.update(color=priority_color.get(vals.get("priority")))
+    #     return super(ProjectTask, self).write(vals)
 
     user_stage_type_id = fields.Many2one(
         comodel_name="project.task.type",

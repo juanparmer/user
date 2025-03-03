@@ -11,7 +11,7 @@ class ProjectProjectUser(models.TransientModel):
 
     def action_confirm(self):
         action = self.env.ref("project_user.project_task_action")
-        action = action.read()[0]
+        action = action.sudo().read()[0]
 
         user_id = self.user_id.id
         domain = [("user_ids", "in", [user_id])]
