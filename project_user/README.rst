@@ -15,7 +15,7 @@ Menu
 
 This module adds a new menu to the system:
 
-.. image:: ./assets/menu.PNG
+.. image:: ./static/descripction/menu.PNG
    :width: 60%
    :align: center
 
@@ -34,33 +34,33 @@ Screenshots
 
 **Main Menu**
 
-.. image:: ./assets/menu.PNG
+.. image:: ./static/descripction/menu.PNG
    :width: 70%
    :align: center
 
 **My Tasks View**
 
-.. image:: ./assets/view_my_tasks.PNG
+.. image:: ./static/descripction/view_my_tasks.PNG
    :width: 70%
    :align: center
 
 **All Tasks View**
 
-.. image:: ./assets/view_all_tasks.PNG
+.. image:: ./static/descripction/view_all_tasks.PNG
    :width: 70%
    :align: center
 
 **User Tasks View**
 
-.. image:: ./assets/view_user_tasks.PNG
+.. image:: ./static/descripction/view_user_tasks.PNG
    :width: 70%
    :align: center
 
-.. image:: ./assets/selection_user.PNG
+.. image:: ./static/descripction/selection_user.PNG
    :width: 70%
    :align: center
 
-.. image:: ./assets/view_user_selection_tasks.PNG
+.. image:: ./static/descripction/view_user_selection_tasks.PNG
    :width: 70%
    :align: center
 
