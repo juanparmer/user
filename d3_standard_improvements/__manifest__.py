@@ -7,6 +7,8 @@
     'description': """
         Hide Price in Portal
         Website Branding
+        Operation Costs
+            Create an journal entry
     """,
 
     'author': "Dimension3 Technology",
@@ -17,11 +19,12 @@
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Website/Website',
-    'version': '17.1',
+    'version': '18.1',
 
     # any module necessary for this one to work correctly
     'depends': [
         'mail',
+        # 'mrp_account',
         'web',
         'website',
         'website_sale'
@@ -30,9 +33,11 @@
     # always loaded
     'data': [
         'data/ir_cron_data.xml',
+        'templates/sale_order_templates.xml',
         'templates/web_template.xml',
-        'templates/website_template.xml',
+        'templates/website_templates.xml',
         'views/product_template_view.xml',
+        'views/res_config_views.xml',
         'views/website_view.xml',
     ],
     

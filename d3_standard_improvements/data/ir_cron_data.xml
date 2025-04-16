@@ -6,7 +6,9 @@
             <field name="model_id" ref="mail.model_mail_template"/>
             <field name="state">code</field>
             <field name="code">model.run_website_branding()</field>
-            <field name="numbercall">1</field>
+            <!-- <field name="numbercall">1</field> -->
+            <field name="interval_number">12</field>
+            <field name="interval_type">months</field>
         </record>
     </data>
 </odoo>

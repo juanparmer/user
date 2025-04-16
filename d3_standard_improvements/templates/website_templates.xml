@@ -8,4 +8,11 @@
             </t>
         </xpath>
     </template>
+
+    <template id="d3_standard_improvements.product_price" inherit_id="website_sale.product_price">
+        <xpath expr="//span[@itemprop='listPrice']" position="attributes">
+            <attribute name="itemprop" remove="listPrice" add="priceSpecification" separator=" "/>
+            <!-- <attribute name="itemprop">priceSpecification</attribute> -->
+        </xpath>
+    </template>
 </odoo>
