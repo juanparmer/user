@@ -28,6 +28,8 @@
         'report/report_timesheet_templates.xml',
         'views/mail_mail_views.xml',
         'views/project_project_views.xml',
+        'views/res_config_view.xml',
+        'wizard/external_api_views.xml',
         'wizard/timesheet_weekly_views.xml',
     ],
     # only loaded in demonstration mode

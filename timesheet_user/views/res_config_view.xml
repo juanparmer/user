@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_hr_timesheet" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_timesheet.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='hr_timesheet']" position="inside">
+                <block title="External API">
+                    <setting id="api_url" company_dependent="1">
+                        <field name="api_url" />
+                    </setting>
+                    <setting id="api_db" company_dependent="1">
+                        <field name="api_db" />
+                    </setting>
+                    <setting id="api_username" company_dependent="1">
+                        <field name="api_username" />
+                    </setting>
+                    <setting id="api_password" company_dependent="1">
+                        <field name="api_password" password="True" />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

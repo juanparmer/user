@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="external_api_view_form" model="ir.ui.view">
+        <field name="name">external.api.view.form</field>
+        <field name="model">external.api</field>
+        <field name="arch" type="xml">
+            <form string="External API">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_start" />
+                        </group>
+                        <group>
+                            <field name="date_end" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" />
+                    <button string="Cancel" class="oe_highlight" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="external_api_action" model="ir.actions.act_window">
+        <field name="name">External API</field>
+        <field name="res_model">external.api</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="external_api_menu_parent" name="Emails" groups="hr_timesheet.group_hr_timesheet_approver" parent="hr_timesheet.menu_timesheets_reports" sequence="20" />
+    <menuitem id="external_api_menu" action="external_api_action" groups="hr_timesheet.group_hr_timesheet_approver" parent="external_api_menu_parent" sequence="10" />
+    <menuitem id="timesheet_mail_menu" action="mail_mail_action" groups="hr_timesheet.group_hr_timesheet_approver" parent="external_api_menu_parent" sequence="20" />
+</odoo>
