@@ -29,9 +29,8 @@ Long description of module's purpose
         'templates/web_template.xml',
         'templates/website_templates.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        #'demo/demo.xml',
-    ],
+
+    # license
+    'license': 'LGPL-3'
 }
 

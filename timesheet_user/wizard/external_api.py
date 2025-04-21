@@ -62,7 +62,17 @@ class ExternalApiWizard(models.TransientModel):
 
         invoice_line_ids = []
         for line in lines:
-            invoice_line_ids.append((0, 0, {"product_id": product.id, 'quantity': line.get('unit_amount')}))
+            invoice_line_ids.append(
+                (
+                    0,
+                    0,
+                    {
+                        "product_id": product.id,
+                        "quantity": line.get("unit_amount"),
+                        "name": line.get("task_id") and line.get("task_id") [1] or 'Dev',
+                    },
+                )
+            )
         invoice_vals = {
             "move_type": "out_invoice",
             "invoice_line_ids": invoice_line_ids,

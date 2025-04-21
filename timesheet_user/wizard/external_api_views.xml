@@ -33,7 +33,7 @@
     <menuitem
         id="external_api_wizard_menu"
         action="external_api_wizard_action"
-        groups="hr_timesheet.group_hr_timesheet_approver"
+        groups="timesheet_user.external_api_wizard_group"
         parent="timesheet_weekly_menu_parent"
         sequence="30" />
 </odoo>

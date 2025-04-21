@@ -18,7 +18,7 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        'timesheet'
+        'hr_timesheet'
         # 'timesheet_grid'
     ],
 
@@ -28,8 +28,9 @@
         'data/mail_message_data.xml',
         'data/mail_template_data.xml',
         'data/product_product_data.xml',
-        'security/ir.model.access.csv',
         'report/report_timesheet_templates.xml',
+        'security/res_groups_security.xml',
+        'security/ir.model.access.csv',
         'views/mail_mail_views.xml',
         'views/project_project_views.xml',
         'wizard/res_config_view.xml',
