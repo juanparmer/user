@@ -11,12 +11,12 @@ Usage
 - The product's price will no longer be displayed on the website for users.
 
 
-.. image:: ./static/descripction/opc_hide_sales_price.PNG
+.. image:: ./static/description/opc_hide_sales_price.PNG
    :width: 60%
    :align: center
 
 
-.. image:: ./static/descripction/website.PNG
+.. image:: ./static/description/website.PNG
    :width: 60%
    :align: center
 

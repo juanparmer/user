@@ -8,15 +8,15 @@ Configuration
 
 To configure this module, go to ``Manufacturing > Configuration > Settings``. There, enable the ``Work Orders`` option. Once selected, the ``Active Operation Costs`` checkbox will appear and must also be enabled.
 
-.. image:: ./static/descripction/menu.PNG
+.. image:: ./static/description/menu.PNG
    :width: 60%
    :align: center
 
-.. image:: ./static/descripction/opc_work_orders.png
+.. image:: ./static/description/opc_work_orders.png
    :width: 60%
    :align: center
 
-.. image:: ./static/descripction/opc_active_operation_costs.png
+.. image:: ./static/description/opc_active_operation_costs.png
    :width: 60%
    :align: center
 
