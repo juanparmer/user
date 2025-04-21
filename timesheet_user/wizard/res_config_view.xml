@@ -8,16 +8,16 @@
             <xpath expr="//app[@name='hr_timesheet']" position="inside">
                 <block title="External API">
                     <setting id="api_url" company_dependent="1">
-                        <field name="api_url" />
+                        <field name="api_url" string="URL" />
                     </setting>
                     <setting id="api_db" company_dependent="1">
-                        <field name="api_db" />
+                        <field name="api_db" string="DB" />
                     </setting>
                     <setting id="api_username" company_dependent="1">
-                        <field name="api_username" />
+                        <field name="api_username" string="Username" />
                     </setting>
                     <setting id="api_password" company_dependent="1">
-                        <field name="api_password" password="True" />
+                        <field name="api_password" string="Password" password="True" />
                     </setting>
                 </block>
             </xpath>

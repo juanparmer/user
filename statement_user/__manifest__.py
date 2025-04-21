@@ -22,9 +22,9 @@ Long description of module's purpose
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        # 'views/views.xml',
-        # 'views/templates.xml',
+        'report/customer_statement_report.xml',
+        'security/ir.model.access.csv',
+        'templates/customer_statement_report.xml'
     ],
 
     # License

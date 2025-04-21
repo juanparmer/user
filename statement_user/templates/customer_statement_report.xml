@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_customer_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="p">
+                <t t-call="web.external_layout">
+                    <t t-set="vals" t-value="p.prepare_customer_statement()" />
+                    <div class="page">
+                        <!-- Header -->
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <h2>CUSTOMER STATEMENTS TEST</h2>
+                                </div>
+                                <div class="row text-muted">
+                                    <span t-out="vals.get('from_date')" name="from_date" /> TO <span
+                                        t-out="vals.get('to_date')" name="to_date" />
+                                </div>
+                            </div>
+                            <div class="col-6 text-end">
+                                <address class="mb-0" t-field="p.self"
+                                    t-options='{"widget": "contact", "fields": ["address", "name", "vat"], "no_marker": True, "align_right": True}' />
+                            </div>
+                        </div>
+                        <!-- Table -->
+                        <t t-set="partner_lines" t-value="vals.get('lines')[str(p.id)]" />
+                        <div class="row mt-5">
+                            <table class="table table-borderless text-nowrap">
+                                <thead class="border border-dark-subtle">
+                                    <tr>
+                                        <th
+                                            class="text-start border-start border-end border-dark-subtle"
+                                            scope="col">Date</th>
+                                        <th
+                                            class="text-start border-start border-end border-dark-subtle"
+                                            scope="col">Activity</th>
+                                        <th
+                                            class="text-start border-start border-end border-dark-subtle"
+                                            scope="col">Due Date</th>
+                                        <th
+                                            class="text-end border-start border-end border-dark-subtle"
+                                            scope="col">Amount</th>
+                                        <th
+                                            class="text-end border-start border-end border-dark-subtle"
+                                            scope="col">Balance <span
+                                                t-out="vals.get('company').currency_id.name" /></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-bottom border-dark-subtle">
+                                    <tr t-foreach="partner_lines" t-as="line"
+                                        t-att-class="'border-start border-end border-dark-subtle ' + ('border-bottom' if line_index == 0 else '')">
+                                        <td
+                                            class="border-start border-end border-dark-subtle align-middle">
+                                            <span t-out="line['date']" />
+                                        </td>
+                                        <td
+                                            class="border-start border-end border-dark-subtle text-wrap">
+                                            <t t-if="line['move_type']">
+                                                <small t-out="line['move_type']"
+                                                    class="text-muted" />
+                                                <br />
+                                            </t>
+                                            <span t-out="line['activity']" />
+                                            <t t-if="line['reference']">
+                                                <br />
+                                                <small t-out="line['reference']"
+                                                    class="text-muted" />
+                                            </t>
+                                        </td>
+                                        <td
+                                            class="border-start border-end border-dark-subtle align-middle">
+                                            <span t-out="line['due_date']" />
+                                        </td>
+                                        <td
+                                            class="text-end border-start border-end border-dark-subtle align-middle">
+                                            <span t-out="line['amount']" />
+                                        </td>
+                                        <td
+                                            class="text-end border-start border-end border-dark-subtle align-middle">
+                                            <span t-out="line['balance']" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="border-top border-dark-subtle" colspan="5" />
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <t t-set="balance_due" t-value="vals.get('balances_due')[str(p.id)]" />
+                        <div class="row">
+                            <div class="col text-end fs-1">
+                                <label for="balance_due">BALANCE DUE: </label>
+                                <span t-out="balance_due" name="balance_due" class="fw-bold" />
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

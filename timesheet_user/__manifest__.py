@@ -17,25 +17,26 @@
     'version': '17.0.1.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['timesheet_grid'],
+    'depends': [
+        'timesheet'
+        # 'timesheet_grid'
+    ],
 
     # always loaded
     'data': [
         'data/ir_cron_data.xml',
         'data/mail_message_data.xml',
         'data/mail_template_data.xml',
+        'data/product_product_data.xml',
         'security/ir.model.access.csv',
         'report/report_timesheet_templates.xml',
         'views/mail_mail_views.xml',
         'views/project_project_views.xml',
-        'views/res_config_view.xml',
-        'wizard/external_api_views.xml',
+        'wizard/res_config_view.xml',
         'wizard/timesheet_weekly_views.xml',
+        'wizard/external_api_views.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+
     # license
     'license': 'LGPL-3'
 }

@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_statement_user_statement_user,statement_user.statement_user,model_statement_user_statement_user,base.group_user,1,1,1,1
+access_statement_customer_wizard,access.statement.customer.wizard,model_statement_customer_wizard,account.group_account_readonly,1,1,1,1
