@@ -7,7 +7,7 @@
     'description': "",
 
     'author': 'Dimension3',
-    'contributors': ['Juan Arcos juanparmer@gmail.com'],
+    'contributors': ["Juan Arcos juanparmer@gmail.com"],
     'website': 'https://sys.d-3system.com.au',
 
     # Categories can be used to filter modules in modules listing

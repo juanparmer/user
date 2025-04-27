@@ -9,6 +9,7 @@ Long description of module's purpose
     """,
 
     'author': "D-3system",
+    'contributors': ["Juan Arcos juanparmer@gmail.com"],
     'website': "https://www.d-3system.com.au",
 
     # Categories can be used to filter modules in modules listing
