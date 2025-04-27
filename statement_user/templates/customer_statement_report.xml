@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="row">
-                                    <h2>CUSTOMER STATEMENTS TEST</h2>
+                                    <h2>CUSTOMER STATEMENTS</h2>
                                 </div>
                                 <div class="row text-muted">
                                     <span t-out="vals.get('from_date')" name="from_date" /> TO <span

@@ -9,16 +9,4 @@
         <field name="report_file">statement_user.template_customer_statement</field>
         <field name="binding_type">report</field>
     </record>
-
-    <!-- Action on customer form -->
-    <!-- <record id="partner_action_print_customer_statements" model="ir.actions.server">
-        <field name="name">Print Customer Statements</field>
-        <field name="model_id" ref="base.model_res_partner" />
-        <field name="binding_model_id" ref="base.model_res_partner" />
-        <field name="state">code</field>
-        <field name="code">
-            if records:
-                action = records.action_print_customer_statements()
-        </field>
-    </record> -->
 </odoo>

@@ -22,12 +22,14 @@ Long description of module's purpose
 
     # always loaded
     'data': [
+        'data/ir_cron_data.xml',
+        'data/mail_template_data.xml',
         'report/customer_statement_report.xml',
-        'security/ir.model.access.csv',
-        'templates/customer_statement_report.xml'
+        # 'security/ir.model.access.csv',
+        'templates/customer_statement_report.xml',
+        'views/res_partner_views.xml',
     ],
 
     # License
     'license': 'LGPL-3',
 }
-
