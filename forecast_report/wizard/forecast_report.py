@@ -12,7 +12,7 @@ class ForecastReport(models.TransientModel):
     _name = 'forecast.report'
     _description = 'Forecast Report'
 
-    # bom_ids = fields.One2many('mrp.bom', 'product_tmpl_id', 'Bill of Materials')
+    #
 
     date_start = fields.Date(string='Start date')
     date_end = fields.Date(string='End date')

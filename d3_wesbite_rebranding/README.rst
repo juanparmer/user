@@ -1,31 +1,24 @@
-MRP Cost 
-========
+Website Rebranding
+==================
 
-This module extends the functionality of Odoo ``mrp_account`` module by creating accounting entries for the additional costs of operations in manufacturing orders.
+This module extends the functionality of Odoo ``website_sale`` and ``mail`` modules. It is designed to perform a complete rebranding of the Odoo system, with the goal of replacing Odoo's default branding (such as "Powered by Odoo") with Dimension3's custom branding on the website and email templates. This module makes it easy to customize the visual and textual elements of the website and outgoing emails, without needing to manually edit the code.
 
-Configuration
--------------
+Features
+---------------
 
-To configure this module, go to ``Manufacturing > Configuration > Settings``. There, enable the ``Work Orders`` option. Once selected, the ``Active Operation Costs`` checkbox will appear and must also be enabled.
+- **Automation:** Runs automatically every 12 months to keep the branding clean.
+- **Customization:** Allows customization of logos, text, and links on the website and emails.
 
-.. image:: ./static/description/menu.PNG
+.. image:: ./static/description/website.PNG
    :width: 60%
    :align: center
-
-.. image:: ./static/description/opc_work_orders.png
-   :width: 60%
-   :align: center
-
-.. image:: ./static/description/opc_active_operation_costs.png
-   :width: 60%
-   :align: center
-
 
 Bug Tracker
 -----------
 
 Bugs are tracked on `GitHub Issues <https://github.com/TU_REPOSITORIO_GITHUB/issues>`_.
 If you find a bug, please report it with detailed steps to reproduce the issue.
+
 
 Credits
 -------

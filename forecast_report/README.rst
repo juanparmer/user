@@ -1,31 +1,26 @@
-MRP Cost 
-========
+Forecast Report
+==================
 
-This module extends the functionality of Odoo ``mrp_account`` module by creating accounting entries for the additional costs of operations in manufacturing orders.
+This module extends the functionality of Odoo ``stok``. Allows a user to generate a visual report (chart) of expected product quantities over a date range, based on forecast information stored in Odoo.
 
-Configuration
--------------
+Usage
+-----
 
-To configure this module, go to ``Manufacturing > Configuration > Settings``. There, enable the ``Work Orders`` option. Once selected, the ``Active Operation Costs`` checkbox will appear and must also be enabled.
+- Go to ``Inventory > Reporting > Forecast Report``.
+- The user accesses a form where they can: Select a start date, and filter specific products (If you do not select any, the system will use all products of type 'product')
+- You will see a line graph showing the quantity (product_qty) over time (date) by product.
 
-.. image:: ./static/description/menu.PNG
+
+.. image:: ./static/description/opc_hide_sales_price.PNG
    :width: 60%
    :align: center
-
-.. image:: ./static/description/opc_work_orders.png
-   :width: 60%
-   :align: center
-
-.. image:: ./static/description/opc_active_operation_costs.png
-   :width: 60%
-   :align: center
-
 
 Bug Tracker
 -----------
 
 Bugs are tracked on `GitHub Issues <https://github.com/TU_REPOSITORIO_GITHUB/issues>`_.
 If you find a bug, please report it with detailed steps to reproduce the issue.
+
 
 Credits
 -------
