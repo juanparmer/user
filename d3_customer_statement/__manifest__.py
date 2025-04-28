@@ -5,7 +5,7 @@
     'summary': "Account Customer Statements",
 
     'description': """
-Long description of module's purpose
+Send Customer Statements
     """,
 
     'author': "D-3system",
@@ -24,8 +24,8 @@ Long description of module's purpose
     # always loaded
     'data': [
         'data/ir_cron_data.xml',
-        'data/mail_template_data.xml',
         'report/customer_statement_report.xml',
+        'data/mail_template_data.xml',
         'templates/customer_statement_report.xml',
         'views/res_partner_views.xml',
     ],
