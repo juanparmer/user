@@ -1,27 +1,26 @@
-Statement User
+Statement User 
 ==============
 
-Este módulo permite generar estados de cuenta detallados para los clientes en Odoo, con un informe en formato PDF que resume las transacciones realizadas dentro de un rango de fechas específico.
+This module allows generating detailed account statements for customers in Odoo, with a PDF report summarizing the transactions performed within a specific date range.
 
-Características:
+Features:
 ================
-- Permite generar un reporte de estado de cuenta para cada cliente.
-- El usuario puede seleccionar un rango de fechas (desde y hasta) para generar el reporte.
-- El reporte es generado en formato PDF y puede ser descargado o enviado por correo electrónico.
+- Allows generating an account statement report for each customer.
+- The user can select a date range (from and to) to generate the report.
+- The report is generated in PDF format and can be downloaded or sent via email.
 
-Instalación:
+Installation:
 ===========================
-1. Instala el módulo en tu instancia de Odoo.
-2. Una vez instalado, ve a la vista de un cliente en el módulo de Contactos o Clientes.
-3. Verás un botón para **Generar Estado de Cuenta**, que abrirá un asistente para ingresar el rango de fechas (desde y hasta).
-4. Después de ingresar las fechas, el sistema generará el estado de cuenta en formato PDF, que podrás visualizar, descargar o enviar por correo electrónico.
+1. Install the module in your Odoo instance.
+2. Once installed, go to the customer view in the Contacts or Customers module.
+3. You will see a button **Generate Statement**, which will open a wizard to enter the date range (from and to).
+4. After entering the dates, the system will generate the account statement in PDF format, which you can view, download, or send via email.
 
-Uso:
+Usage:
 ===========================
-1. Abre la vista de un cliente.
-2. Haz clic en el botón **Generar Estado de Cuenta** , que abrirá un asistente para ingresar el rango de fechas (desde y hasta).
-3. Después el sistema generará el estado de cuenta en formato PDF, que podrás visualizar, descargar o enviar por correo electrónico.
-
+1. Open the customer view.
+2. Click on the **Generate Statement** button, which will open a wizard to enter the date range (from and to).
+3. The system will then generate the account statement in PDF format, which you can view, download, or send via email.
 
 Bug Tracker
 -----------
