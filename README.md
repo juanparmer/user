@@ -8,13 +8,13 @@ addon | summary | origin
 --- | --- | --- 
 [d3_mrp_cost](d3_mrp_cost/)|  Creates accounting entries for the additional operation costs in manufacturing orders. | D-3System 
 [d3_product_image](d3_product_image/)| Adds product images to sales PDFs and customer portal views. | D-3System 
+[d3_system_code](d3_system_code/)|Adds a "D3 System Settings" section to select and install D3 suite modules.|D-3System 
 [d3_website_price](d3_website_price/)| Hide the sale price of specific products in the website interface. | D-3System 
 [d3_wesbite_rebranding](d3_wesbite_rebranding/)| Replacing the default branding with a custom brand on the website and email templates | D-3System 
-[helpdesk_user](helpdesk_user/)| --- | D-3System OCA 3-party Jay
+[helpdesk_user](helpdesk_user/)| Modifies the Helpdesk module to allow logging time on a ticket by linking it to a task. | D-3System OCA 3-party Jay
 [project_user](project_user/)| Allows viewing and editing of a specific user's personal task view. | D-3System OCA 3-party Jay
-[statement_user](statement_user/)| --- | D-3System OCA 3-party Jay
 [timesheet_user](timesheet_user/)| It allows you to generate and send to the client a weekly report with all the hours reported on a project during the week. | D-3System OCA 3-party Jay
-
+[d3_customer_statement](d3_customer_statement/)| Automatically sends customer account statements monthly through a scheduled action. | D-3System OCA 3-party Jay
 [//]: # (end addons)
 
 ## Licenses
