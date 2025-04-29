@@ -15,6 +15,7 @@ addon | summary | origin
 [project_user](project_user/)| Allows viewing and editing of a specific user's personal task view. | D-3System OCA 3-party Jay
 [timesheet_user](timesheet_user/)| It allows you to generate and send to the client a weekly report with all the hours reported on a project during the week. | D-3System OCA 3-party Jay
 [d3_customer_statement](d3_customer_statement/)| Automatically sends customer account statements monthly through a scheduled action. | D-3System OCA 3-party Jay
+
 [//]: # (end addons)
 
 ## Licenses
