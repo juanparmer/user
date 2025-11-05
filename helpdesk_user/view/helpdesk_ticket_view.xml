@@ -16,7 +16,7 @@
                     {'default_project_id': project_id, 'default_task_id': helpdesk_task_id}
                 </attribute>
             </xpath>
-            <xpath expr="//field[@name='timesheet_ids']/tree/field[@name='task_id']" position="attributes">
+            <xpath expr="//field[@name='timesheet_ids']/list/field[@name='task_id']" position="attributes">
                 <attribute name="column_invisible">False</attribute>
             </xpath>
         </field>

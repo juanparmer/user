@@ -14,7 +14,7 @@
     # for the full list
     'category': 'Website/Website',
     'contributors': ["Juan Arcos juanparmer@gmail.com"],
-    'version': '17.1',
+    'version': '19.1',
 
     # any module necessary for this one to work correctly
     'depends': ['website'],

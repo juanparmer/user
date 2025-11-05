@@ -16,7 +16,7 @@ Long description of module's purpose
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Accounting/Localizations/Reporting',
-    'version': '17.1',
+    'version': '19.1',
 
     # any module necessary for this one to work correctly
     'depends': ['l10n_account_customer_statements'],
