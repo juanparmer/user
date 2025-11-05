@@ -19,6 +19,14 @@ class ProjectTask(models.Model):
         ondelete={"2": "set default", "3": "set default"},
     )
 
+    # state = fields.Selection(
+    #     selection_add=[
+    #         ("04_waiting_feedback", "Waiting Feedback"),
+    #         ("01_in_progress",),
+    #     ],
+    #     ondelete={"04_waiting_feedback": "set default"},
+    # )
+
     # @api.model_create_multi
     # def create(self, vals_list):
     #     for vals in vals_list:

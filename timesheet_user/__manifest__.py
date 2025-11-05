@@ -27,18 +27,18 @@
         'data/ir_cron_data.xml',
         'data/mail_message_data.xml',
         'data/mail_template_data.xml',
-        'data/product_product_data.xml',
+        # 'data/product_product_data.xml',
         'report/report_timesheet_templates.xml',
         'security/res_groups_security.xml',
         'security/ir.model.access.csv',
         'views/mail_mail_views.xml',
         'views/project_project_views.xml',
-        'wizard/res_config_view.xml',
+        # 'wizard/res_config_view.xml',
         'wizard/timesheet_weekly_views.xml',
-        'wizard/external_api_views.xml',
+        # 'wizard/external_api_views.xml',
     ],
 
     # license
-    'license': 'LGPL-3'
+    'license': 'OPL-1'
 }
 

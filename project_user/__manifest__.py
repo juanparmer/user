@@ -28,6 +28,15 @@
         'wizard/project_task_wizard.xml',
     ],
 
+    # "assets": {
+    #     "web.assets_backend": [
+    #         'project_user/static/src/components/**/*',
+    #     ],
+    #     'project.webclient': [
+    #         'project_user/static/src/components/project_task_state_selection/*',
+    #     ],
+    # },
+
     # License
     'license': 'LGPL-3',
 }

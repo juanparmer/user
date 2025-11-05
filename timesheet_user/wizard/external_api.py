@@ -70,6 +70,7 @@ class ExternalApiWizard(models.TransientModel):
                         "product_id": product.id,
                         "quantity": line.get("unit_amount"),
                         "name": line.get("task_id") and line.get("task_id") [1] or 'Dev',
+                        "price_unit": 31.19
                     },
                 )
             )

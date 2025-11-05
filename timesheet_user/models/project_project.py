@@ -34,7 +34,7 @@ class ProjectProject(models.Model):
         template = self.env.ref('timesheet_user.template_timesheet_weekly')
 
         date_start = fields.Date.subtract(
-            fields.Date.context_today(self), days=6
+            fields.Date.context_today(self), days=7
         )
         date_end = fields.Date.context_today(self)
 

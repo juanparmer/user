@@ -125,7 +125,7 @@ class TimesheetWeekly(models.TransientModel):
                 ('date', '<=', self.date_end),
             ])
             if not timesheets:
-                project_names.append(project.name)
+                # project_names.append(project.name)
                 continue
 
         if project_names:

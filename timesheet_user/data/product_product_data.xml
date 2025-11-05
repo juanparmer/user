@@ -7,7 +7,7 @@
             <field name="type">service</field>
             <field name="sale_ok" eval="False" />
             <field name="purchase_ok" eval="False" />
-            <field name="list_price">30.0</field>
+            <!-- <field name="list_price">30.0</field> -->
         </record>
     </data>
 </odoo>
