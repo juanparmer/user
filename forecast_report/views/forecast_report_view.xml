@@ -1,0 +1,85 @@
+<odoo>
+    <record id="forecast_report_view_form" model="ir.ui.view">
+        <field name="name">forecast.report.view.form</field>
+        <field name="model">forecast.report</field>
+        <field name="arch" type="xml">
+            <form string="Forecast Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_start" required="True" />
+                            <field name="date_end" required="True" />
+                        </group>
+                        <group>
+                            <field name="products_ids" domain="[('type','=','product')]" widget="many2many_tags" />
+                            <field name="product_id" domain="[('type','=','product')]" invisible="1" />
+                            <field name="product_tmpl_id" domain="[('type','=','product')]" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="forecast_report_product_view_search" model="ir.ui.view">
+        <field name="name">forecast.report.product.view.search</field>
+        <field name="model">forecast.report.product</field>
+        <field name="arch" type="xml">
+            <search string="Forecast Product">
+                <field name="product_id" />
+                <field name="product_tmpl_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="forecast_report_product_view_tree" model="ir.ui.view">
+        <field name="name">forecast.report.product.view.tree</field>
+        <field name="model">forecast.report.product</field>
+        <field name="arch" type="xml">
+            <tree string="Forecast Product" editable="bottom">
+                <field name="date" optional="hide" />
+                <field name="product_id" />
+                <field name="product_qty" sum="Qty" />
+                <!-- <field name="product_tmpl_id" /> -->
+                <field name="document_in" />
+                <field name="receipt_date" />
+                <field name="document_out" />
+                <field name="delivery_date" />
+                <field name="move_out" optional="hide" />
+                <field name="move_in" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="forecast_report_product_view_graph" model="ir.ui.view">
+        <field name="name">forecast.report.product.view.graph</field>
+        <field name="model">forecast.report.product</field>
+        <field name="arch" type="xml">
+            <graph string="Forecast Product" type="line" sample="1">
+                <field name="date" interval="day"/>
+                <field name="product_id"/>
+                <field name="product_qty" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="forecast_report_action" model="ir.actions.act_window">
+        <field name="name">Forecast Report</field>
+        <field name="res_model">forecast.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="forecast_report_product_action" model="ir.actions.act_window">
+        <field name="name">Forecast Product</field>
+        <field name="res_model">forecast.report.product</field>
+        <field name="view_mode">tree,graph</field>
+        <field name="domain">[('user_id','=',uid)]</field>
+    </record>
+
+    <menuitem id="forecast_report_menu" action="forecast_report_action" parent="stock.menu_warehouse_report" sequence="400" />
+</odoo>

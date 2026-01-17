@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="external_apiwizard_view_form" model="ir.ui.view">
+        <field name="name">external.api.wizard.view.form</field>
+        <field name="model">external.api.wizard</field>
+        <field name="arch" type="xml">
+            <form string="External API">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_start" />
+                        </group>
+                        <group>
+                            <field name="date_end" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" />
+                    <button string="Cancel" class="oe_highlight" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="external_api_wizard_action" model="ir.actions.act_window">
+        <field name="name">External API</field>
+        <field name="res_model">external.api.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="external_api_wizard_menu"
+        action="external_api_wizard_action"
+        groups="timesheet_user.external_api_wizard_group"
+        parent="timesheet_weekly_menu_parent"
+        sequence="30" />
+</odoo>

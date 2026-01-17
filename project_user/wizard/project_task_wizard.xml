@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_user_view_form" model="ir.ui.view">
+        <field name="name">project.task.user.view.form</field>
+        <field name="model">project.task.user</field>
+        <field name="arch" type="xml">
+            <form string="user Tasks">
+                <sheet>
+                    <group>
+                        <field name="user_id" required="1" domain="[('id','!=',uid)]" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_task_user_action" model="ir.actions.act_window">
+        <field name="name">User Tasks</field>
+        <field name="res_model">project.task.user</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="project_task_user_menu"
+        action="project_task_user_action"
+        groups="project.group_project_manager"
+        parent="project.menu_project_management"
+        sequence="10" />
+</odoo>

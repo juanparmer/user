@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_search_account" model="ir.ui.view">
+        <field name="name">res.partner.view.search.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.res_partner_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='supplier']" position="after">
+                <filter string="Customer Statements" name="customer_statements"
+                    domain="[('customer_statement','=', True), ('parent_id','=',False)]" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_property_form_account" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='accounting']/group[1]" position="inside">
+                <group string="Customer Statement">
+                    <field name="customer_statement" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

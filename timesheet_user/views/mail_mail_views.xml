@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mail_search_mail" model="ir.ui.view">
+        <field name="name">mail.mail.view.search.inherit</field>
+        <field name="model">mail.mail</field>
+        <field name="inherit_id" ref="mail.view_mail_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_type_notification']" position="after">
+                <separator />
+                <filter name="filter_timesheet_mail" string="Timesheet" domain="[('subtype_id','ilike','Timesheet')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mail_mail_action" model="ir.actions.act_window">
+        <field name="name">Timesheet Emails</field>
+        <field name="res_model">mail.mail</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="mail.view_mail_search"/>
+        <field name="context">{'search_default_filter_timesheet_mail': True}</field>
+    </record>
+</odoo>

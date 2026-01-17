@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_forecast_report,access.forecast.report,model_forecast_report,stock.group_stock_manager,1,1,1,1
+access_forecast_report_product,access.forecast.report.product,model_forecast_report_product,stock.group_stock_manager,1,0,0,0

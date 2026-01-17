@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="True">
+    <record id="mail_message_subtype_timesheet" model="mail.message.subtype">
+        <field name="name">Timesheet</field>
+        <field name="sequence">30</field>
+        <field name="res_model">project.project</field>
+        <field name="default" eval="False"/>
+        <field name="hidden" eval="False"/>
+    </record>
+</odoo>
